@@ -4,8 +4,8 @@ public class Business {
 
 	public static void main(String[] args) {
 		
-		System.out.println("¾È³çÇÏ¼¼¿ä.");
-		System.out.println("¹Ý°©½À´Ï´Ù.");
+		System.out.println("ì•ˆë…•í•˜ì„¸ìš”");
+		System.out.println("ë°˜ê°‘ìŠµë‹ˆë‹¹.");
 	}
 
 }
