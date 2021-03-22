@@ -63,7 +63,7 @@ public class Manager extends Calculator implements Food{
 			System.out.println("패스워드를 입력하세요 >");
 			pwTest = sc.nextInt();
 			if(managerPassword == pwTest) {
-				System.out.println("관리자 입니다!!!!");
+				System.out.println("관리자 입니다!!!");
 				managerMenu();
 				
 			}else { 

@@ -14,9 +14,7 @@ public class Buyer extends Calculator implements Food{
 	@Override
 	public void search() {
 		
-		System.out.println("평점을 입력하세요 (1~5점) >");
-		jumsu = sc.nextInt();
-		evaluation(jumsu);
+		
 		
 	}
 	
