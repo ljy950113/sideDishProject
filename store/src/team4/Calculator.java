@@ -52,9 +52,9 @@ public class Calculator { // 계산관련 로직을 담는 객체
 	
 	
 	
-	void point() { //고객의 포인트 적립 계산 메소드 반찬류 10%, 국류 15%
+	void point() { //고객의 포인트 적립 계산 메소드 반찬류 2%, 국류 3%
 		
-		System.out.println("포인트1");
+		
 		
 	}
 
