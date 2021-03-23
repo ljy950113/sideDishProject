@@ -23,7 +23,7 @@ public class Manager extends Calculator implements Food{
 
 
 
-
+	
 
 	@Override
 	public void search() { //제품 현황 조회

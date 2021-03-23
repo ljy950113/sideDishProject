@@ -2,6 +2,7 @@ package team4;
 
 public interface Food {
 	
+	
 	static int password = 1234; //관리자 비밀번호
 	
 	
