@@ -26,7 +26,7 @@ public class Manager extends Calculator implements Food{
 	
 
 	@Override
-	public void search() { //제품 현황 조회
+	public void search() { //제품 현황 조회임
 		System.out.println("<< 제품 조회 >>");
 		System.out.println();
 		System.out.println("반찬명  |  반찬수량  |  폐기갯수  | 반찬평점");
