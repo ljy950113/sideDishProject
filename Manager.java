@@ -76,7 +76,7 @@ public class Manager implements Food{
 			}
 	public void entering() {
 		boolean run = true;
-		while(run) {
+			do	{
 			System.out.println("<<입고>>");
 			System.out.println("1. 국  2. 반찬");
 			System.out.println("선택>");
@@ -120,12 +120,13 @@ public class Manager implements Food{
 				}
 				System.out.println("계속 하시겠습니까?(Y/N)");
 				ys = sc.next();
-				if(ys.equals("n") || ys.equals("N")) run = false;
+				if(ys.equals("n") || ys.equals("N")) managerMode();
 				break;
 			default : System.out.println("잘못입력하셨습니다. 다시 입력해주세요"); break;
 			}
+		}while(run);
 	}
-	}
+
 	public void search() {
 			int i;
 			System.out.println("---------------<<제품 조회>>--------------------");
@@ -151,7 +152,9 @@ public class Manager implements Food{
 		System.out.println("선택 > ");
 		int selectNo = sc.nextInt();
 		if(selectNo == 1) {
-			System.out.println("1. 갈비탕 | 2. 육개장 | 3. 된장찌개 | 4. 김치찌개 | 5.부대찌개");
+			System.out.println("1. " + soupName[0] +" | " +  " 2. " + soupName[1] + " | " +
+					" 3. "  +soupName[2] + " | " + " 4. " +soupName[3] +" | " + 
+					" 5. " + soupName[4]);
 			System.out.println("삭제하실 제품을 선택하세요");
 			System.out.println("선택>");
 			int select = sc.nextInt();
@@ -162,7 +165,9 @@ public class Manager implements Food{
 			}
 		}
 		if(selectNo == 2) {
-			System.out.println("1. 무말랭이 | 2. 메추리알 | 3. 콩자반 | 4. 멸치볶음 | 5. 배추김치");
+			System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
+					" 3. "  +sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
+					" 5. " + sideName[4]);
 			System.out.println("삭제하실 제품을 선택하세요");
 			System.out.println("선택>");
 			int select = sc.nextInt();
