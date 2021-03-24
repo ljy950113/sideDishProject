@@ -6,11 +6,15 @@ public class Manager implements Food{
 	Scanner sc = new Scanner(System.in);
 	
 	String[] soupName = {"갈비탕", "육개장", "된장찌개", "김치찌개","부대찌개"}; // 탕종류 배열 0열에 육개장 1열에 김치찌개 이런식
-	int[] soupPrice = new int[5];
-	int[] soupAmount = new int[5]; // 0갈비탕 1육개장 2된장찌개 3김치찌개 4부대찌개
+	int[] soupPrice = new int[6];
+	int[] soupAmount = new int[6]; // 0갈비탕 1육개장 2된장찌개 3김치찌개 4부대찌개
 	String[] sideName = {"무말랭이", "메추리알", "콩자반", "멸치볶음","배추김치"};// 반찬류 배열 0열에 배추김치, 1열에 갓김치
-	int[] sidePrice  = new int[5];
-	int[] sideAmount = new int[5];
+	int[] sidePrice  = new int[6];
+	int[] sideAmount = new int[6];
+	int[] soupAll = new int[6];
+	int[] sideAll = new int[6];
+	int[] remove = new int[6];
+	int[]removeAll = new int[6];
 	boolean flag = true;
 	
 	public void start() {
@@ -76,6 +80,7 @@ public class Manager implements Food{
 			}
 	public void entering() {
 		boolean run = true;
+		
 			while(run) {
 			System.out.println("<<입고>>");
 			System.out.println("1. 국  2. 반찬");
@@ -94,13 +99,16 @@ public class Manager implements Food{
 						System.out.println((i+1)+ ". " +soupName[i]);
 						System.out.println("수량 입력>");
 						soupAmount[i] = sc.nextInt();
+						soupAll[i] += soupAmount[i];
 						System.out.println("가격 입력>");
 						soupPrice[i] = sc.nextInt();
 					}
 				}
 				System.out.println("계속 하시겠습니까?(Y/N)");
 				String ys = sc.next();
-				if(ys.equals("n") || ys.equals("N")) managerMode();
+				if(ys.equals("n") || ys.equals("N")) {
+					run = false;managerMode();
+				}
 				break;
 			case 2:
 				System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
@@ -113,76 +121,115 @@ public class Manager implements Food{
 						System.out.println((i+1)+ ". " +sideName[i]);
 						System.out.println("수량입력>");
 						sideAmount[i] = sc.nextInt();
+						sideAll[i]+=sideAmount[i];
+						
 						System.out.println("가격입력>");
 						sidePrice[i] = sc.nextInt();
 					}
-			
 				}
 				System.out.println("계속 하시겠습니까?(Y/N)");
 				ys = sc.next();
-				if(ys.equals("n") || ys.equals("N")) managerMode();
+				if(ys.equals("n") || ys.equals("N")) {
+					run = false;
+					managerMode();
+					}
 				break;
 			default : System.out.println("잘못입력하셨습니다. 다시 입력해주세요"); break;
 			}
-			run = false;
 		}
 	}
 
-	public void search() {
-			int i;
-			System.out.println("---------------<<제품 조회>>--------------------");
-			System.out.println("------------------<<국류>>------------------------");
-			System.out.println("반찬명 | 반찬 수량 | 폐기 갯수 | 반찬평점");
-			for (  i = 0; i < soupName.length; i++) {
-				System.out.println(sideName[i] + " | " + sideAmount[i] + " | " + "폐기개수" + " | " + "반찬평점");
-			}
-			System.out.println();
-			System.out.println("------------------<<반찬류>>------------------------");
-			System.out.println("반찬명 | 반찬 수량 | 폐기 갯수 | 반찬평점");
-			for (  i = 0; i < soupName.length; i++) {
-				System.out.println(soupName[i] + " | " + soupAmount[i] + " | " + "폐기개수" + " | " + "반찬평점");
-			}
-			System.out.println();
-			System.out.println("돌아가기-->");
-			String yn = sc.next();
-			if(yn.equals("y") || yn.equals("Y")) {managerMode();}
-	}
+
 	public void delete() {
-		System.out.println("<<삭제>>");
-		System.out.println("1 국  2. 반찬");
-		System.out.println("선택 > ");
-		int selectNo = sc.nextInt();
-		if(selectNo == 1) {
-			System.out.println("1. " + soupName[0] +" | " +  " 2. " + soupName[1] + " | " +
-					" 3. "  +soupName[2] + " | " + " 4. " +soupName[3] +" | " + 
-					" 5. " + soupName[4]);
-			System.out.println("삭제하실 제품을 선택하세요");
-			System.out.println("선택>");
+		boolean run = true;
+		
+			while(run) {
+			System.out.println("<<삭제>>");
+			System.out.println("1 국  2. 반찬");
+			System.out.println("선택 > ");
 			int select = sc.nextInt();
 			
-			if(select == 1 || select ==2 || select==3 || select==4 || select==5) {
-				System.out.println("폐기하실 개수를 정해주세요");
-				int termin = sc.nextInt();
+			switch(select) {
+			case 1:
+				System.out.println("1. " + soupName[0] +" | " +  " 2. " + soupName[1] + " | " +
+											" 3. "  +soupName[2] + " | " + " 4. " +soupName[3] +" | " + 
+											" 5. " + soupName[4]);
+				System.out.println("선택>");
+				int selectNo = sc.nextInt();
+				for( int i=0; i < soupName.length; i++) {
+					if(selectNo == i+1) {
+						System.out.println((i+1)+ ". " +soupName[i]);
+						System.out.println("몇개 폐기 하실래요?");
+						remove[i] = sc.nextInt();
+						
+						removeAll[i]+=remove[i];
+						soupAll[i]-=removeAll[i];
+						if(soupAll[i] <= i) soupAll[i] = i;
+					}
+				}
+				System.out.println("돌아가기-->");
+				String yn = sc.next();
+				if(yn.equals("y") || yn.equals("Y")) {
+					managerMode();
+				}else {
+					delete();
 			}
-		}
-		if(selectNo == 2) {
-			System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
-					" 3. "  +sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
-					" 5. " + sideName[4]);
-			System.out.println("삭제하실 제품을 선택하세요");
-			System.out.println("선택>");
-			int select = sc.nextInt();
-			
-			if(select == 1 || select ==2 || select==3 || select==4 || select==5) {
-				System.out.println("폐기하실 개수를 정해주세요");
-				int termin = sc.nextInt();
+				break;
+			case 2:
+				System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
+											" 3. "  +sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
+											" 5. " + sideName[4]);
+				System.out.println("선택>");
+					selectNo = sc.nextInt();
+				for( int i=0; i < sideName.length; i++) {
+					if(selectNo == i+1) {
+						System.out.println((i+1)+ ". " +soupName[i]);
+						System.out.println("몇개 폐기 하실래요?");
+						remove[i] = sc.nextInt(); 
+						removeAll[i]+=remove[i]; 
+						if(soupAll[i] <= i) soupAll[i] = i;
+					}
+				}
+				System.out.println("돌아가기-->");
+					yn = sc.next();
+				if(yn.equals("y") || yn.equals("Y")) {
+					managerMode();
+				}else {
+					delete();
+				}
+				}
+				break;
 			}
-		}
 	}
 	public void customer() {
 		System.out.println("<<고객관리>>");
 		System.out.println("고객No. | 총 포인트");
 		
 	}
+	public void search() {
+		int i;
+		System.out.println("---------------<<제품 조회>>----------------------------");
+		System.out.println("------------------<<국류>>-------------------------------");
+		System.out.println("반찬명 | 반찬 수량 |  폐기 갯수 | 반찬평점");
+		for (  i = 0; i < soupName.length; i++) {
+			System.out.println( soupName[i] + " | " + soupAll[i] + " | " + removeAll[i] + " | " + "반찬평점");
+		}
+		System.out.println();
+		System.out.println("------------------<<반찬류>>-----------------------------");
+		System.out.println("반찬명 | 반찬 수량 | 총 액수 | 폐기 갯수 | 반찬평점");
+	
+		for (  i = 0; i < sideName.length; i++) {
+			System.out.println(sideName[i] + " | " + sideAll[i]  + " | " + "폐기개수" + " | " + "반찬평점");
+		}
+		System.out.println();
+		
+		System.out.println("돌아가기-->");
+		String yn = sc.next();
+		if(yn.equals("y") || yn.equals("Y")) {
+			managerMode();
+			}else {
+				search();
+			}
+}
 	
 }
