@@ -109,7 +109,7 @@ public class Manager extends Calculator implements Food{
 	public void entering() {
 		boolean run = true;
 
-		String choice; //선택 테스트용 변수
+		String choice; //선택 테스트용 변수입니다.
 		while(run) {
 			System.out.println("<<  입고  >>");
 			System.out.println("1. 국  2. 반찬");
