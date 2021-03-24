@@ -76,7 +76,7 @@ public class Manager implements Food{
 			}
 	public void entering() {
 		boolean run = true;
-			do	{
+			while(run) {
 			System.out.println("<<입고>>");
 			System.out.println("1. 국  2. 반찬");
 			System.out.println("선택>");
@@ -124,7 +124,8 @@ public class Manager implements Food{
 				break;
 			default : System.out.println("잘못입력하셨습니다. 다시 입력해주세요"); break;
 			}
-		}while(run);
+			run = false;
+		}
 	}
 
 	public void search() {
