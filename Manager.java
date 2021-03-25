@@ -12,7 +12,8 @@ public class Manager implements Food{
 	int[] sidePrice  = new int[6];
 	int[] sideAmount = new int[6];
 	int[] remove = new int[6];
-	int[] rest = new int[6];
+	int[] rest1 = new int[6]; // 국 잔여량
+	int[] rest2 = new int[6]; // 반찬 잔여량
 	
 	boolean flag = true;
 	
@@ -32,7 +33,7 @@ public class Manager implements Food{
 			
 			switch(select) {
 			case 1: password();  break;
-			case 2: Buyer.buyerPrint();; break;
+			case 2: Buyer.buyerPrint(); break;
 			case 3: System.out.println("시스템을 종료합니다."); flag = false; break;
 			default : System.out.println("메뉴를 다시 선택하세요");
 			}
@@ -166,11 +167,11 @@ public class Manager implements Food{
 						remove[i] += sc.nextInt();
 						
 					
-						rest[i] = soupAmount[i]-remove[i];
+						rest1[i] = soupAmount[i]-remove[i];
 						//if(soupAmount[i] <= 0) soupAmount[i] = 0;
-						if(rest[i] <=0) {
+						if(rest1[i] <=0) {
 							System.out.println("뺄수없습니다.");
-							rest[i] = 0;
+							rest1[i] = 0;
 						}
 					}
 				}
@@ -193,11 +194,11 @@ public class Manager implements Food{
 						remove[i] += sc.nextInt();
 						
 					
-						rest[i] = sideAmount[i]-remove[i];
+						rest2[i] = sideAmount[i]-remove[i];
 						//if(soupAmount[i] <= 0) soupAmount[i] = 0;
-						if(rest[i] <=0) {
+						if(rest2[i] <=0) {
 							System.out.println("뺄수없습니다.");
-							rest[i] = 0;
+							rest2[i] = 0;
 						}
 				}
 				System.out.println("돌아가기-->(Y or N)");
@@ -222,7 +223,7 @@ public class Manager implements Food{
 		System.out.println("------------------<<국류>>-------------------------------");
 		System.out.println("반찬명 | 입고 수량 |  잔여 갯수 | 반찬평점");
 		for (  i = 0; i < soupName.length; i++) {
-			System.out.println( soupName[i] + " | " + soupAmount[i] + " | " + rest[i] + " | " + "반찬평점");
+			System.out.println( soupName[i] + " | " + soupAmount[i] + " | " + rest1[i] + " | " + "반찬평점");
 		}
 		
 		System.out.println();
@@ -230,7 +231,7 @@ public class Manager implements Food{
 		System.out.println("반찬명 | 반찬 수량 | 총 액수 | 잔여 갯수 | 반찬평점");
 	
 		for (  i = 0; i < sideName.length; i++) {
-			System.out.println(sideName[i] + " | " + sideAmount[i]  + " | " + rest[i] + " | " + "반찬평점");
+			System.out.println(sideName[i] + " | " + sideAmount[i]  + " | " + rest2[i] + " | " + "반찬평점");
 		}
 		System.out.println();
 		
@@ -241,6 +242,11 @@ public class Manager implements Food{
 			}else {
 				search();
 			}
-}
-	
+	}
+	public  void customerSearch() {
+		for(int i = 0; i < soupName.length; i++) {
+			System.out.println(soupName[i] + " | " + soupAmount[i] + " | " + soupPrice[i]);
+			System.out.println(sideName[i] + " | " + sideAmount[i] + " | " + sidePrice[i]);
+		}
+	}
 }
