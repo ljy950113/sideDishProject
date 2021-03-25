@@ -99,21 +99,20 @@ public class Manager implements Food{
 						System.out.println((i+1)+ ". " +soupName[i]);
 						System.out.println("수량 입력>");
 						soupAmount[i] += sc.nextInt();
-						//soupAll[i] += soupAmount[i];
 						System.out.println("가격 입력>");
 						soupPrice[i] = sc.nextInt();
-						/*if(soupPrice[i]<=1000) {
-							System.out.println("금액이 너무 낮습니다. 1000원 이상으로 입력해주세요");
-							soupPrice[i]=sc.nextInt();
-						}*/
-					}
-				}
+					}//selectNo if문 끝
+					if(selectNo >= soupName.length) {
+						System.out.println("1번부터 5번중에 선택해주세요");
+						entering();
+					}//6번찍었을때 돌아가기
 				System.out.println("계속 하시겠습니까?(Y/N)");
 				String ys = sc.next();
 				if(ys.equals("n") || ys.equals("N")) {
 					run = false;managerMode();
-				}
-				break;
+				}//ys 문
+			}//for문
+			break;
 			case 2:
 				System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
 						" 3. "  +sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
@@ -125,22 +124,24 @@ public class Manager implements Food{
 						System.out.println((i+1)+ ". " +sideName[i]);
 						System.out.println("수량입력>");
 						sideAmount[i] += sc.nextInt();
-						//sideAll[i]+=sideAmount[i];
-						
 						System.out.println("가격입력>");
 						sidePrice[i] = sc.nextInt();
 					}
-				}
-				System.out.println("계속 하시겠습니까?(Y/N)");
-				ys = sc.next();
-				if(ys.equals("n") || ys.equals("N")) {
+					if(selectNo >= sideName.length) {
+						System.out.println("1번부터 5번중에 선택해주세요");
+						entering();
+						}//6번찍으면 돌아가기
+					System.out.println("계속 하시겠습니까?(Y/N)");
+					String ys = sc.next();
+					if(ys.equals("n") || ys.equals("N")) {
 					run = false;
 					managerMode();
 					}
+				}//for문끝
 				break;
 			default : System.out.println("잘못입력하셨습니다. 다시 입력해주세요"); break;
 			}
-		}
+		}//while문 끝
 	}
 
 
@@ -165,53 +166,54 @@ public class Manager implements Food{
 						System.out.println((i+1)+ ". " +soupName[i]);
 						System.out.println("몇개 폐기 하실래요?");
 						remove[i] += sc.nextInt();
-						
-					
 						rest1[i] = soupAmount[i]-remove[i];
-						//if(soupAmount[i] <= 0) soupAmount[i] = 0;
 						if(rest1[i] <=0) {
 							System.out.println("뺄수없습니다.");
 							rest1[i] = 0;
 						}
+					}//ifselct끝
+					if(selectNo >= soupAmount.length) {
+					System.out.println("1번부터 5번중에 선택해주세요");
+					delete();
 					}
-				}
+				}//for문 끝
 				System.out.println("돌아가기-->(Y or N)");
 				String yn = sc.next();
 				if(yn.equals("y") || yn.equals("Y")) managerMode();
 				if(yn.equals("n") || yn.equals("N")) delete();
-				else System.out.println("잘못입력하셨습니다."); 
-				break;
+				else System.out.println("잘못입력하셨습니다."); 	break;
 			case 2:
 				System.out.println("1. " + sideName[0] +" | " +  " 2. " + sideName[1] + " | " +
-											" 3. "  +sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
+											" 3. " + sideName[2] + " | " + " 4. " +sideName[3] +" | " + 
 											" 5. " + sideName[4]);
 				System.out.println("선택>");
 					selectNo = sc.nextInt();
 				for( int i=0; i < sideAmount.length; i++) {
 					if(selectNo == i+1) {
-						System.out.println((i+1)+ ". " +sideName[i]);
+						System.out.println((i+1)+ ". " + sideName[i]);
 						System.out.println("몇개 폐기 하실래요?");
 						remove[i] += sc.nextInt();
-						
-					
 						rest2[i] = sideAmount[i]-remove[i];
-						//if(soupAmount[i] <= 0) soupAmount[i] = 0;
 						if(rest2[i] <=0) {
 							System.out.println("뺄수없습니다.");
 							rest2[i] = 0;
 						}
-				}
-				System.out.println("돌아가기-->(Y or N)");
-					yn = sc.next();
-				if(yn.equals("y") || yn.equals("Y")) managerMode();
-				if(yn.equals("n") || yn.equals("N")) delete();
-				else System.out.println("잘못입력하셨습니다.");
-				}
-				break;
-				default : System.out.println("잘못입력하셨습니다."); run=false; 
-			}
-			}
-	}
+					}
+					if(selectNo >= sideAmount.length) {
+						System.out.println("1번부터 5번중에 선택해주세요");
+						delete();
+					}
+			}//for문 끝
+			System.out.println("돌아가기-->(Y or N)");
+				yn = sc.next();
+			if(yn.equals("y") || yn.equals("Y")) managerMode();
+			if(yn.equals("n") || yn.equals("N")) delete();
+			else System.out.println("잘못입력하셨습니다."); 
+			break;
+			default : System.out.println("잘못입력하셨습니다."); delete(); break;
+			}//end switch
+		}//end while
+	}//end delete
 	public void customer() {
 		System.out.println("<<고객관리>>");
 		System.out.println("고객No. | 총 포인트");
