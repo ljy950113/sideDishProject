@@ -9,36 +9,23 @@ public class Manager implements Food{
 	
 	Scanner sc = new Scanner(System.in);
 
-	static String[] soupName = {"갈비탕", "육개장", "된장찌개", "김치찌개","부대찌개"}; // 탕종류 배열 0열에 육개장 1열에 김치찌개 이런식
-	static int[] soupPrice = new int[6];
-	static int[] soupAmount = new int[6]; // 0갈비탕 1육개장 2된장찌개 3김치찌개 4부대찌개
-	static String[] sideName = {"무말랭이", "메추리알", "콩자반", "멸치볶음","배추김치"};// 반찬류 배열 0열에 배추김치, 1열에 갓김치
-	static int[] sidePrice  = new int[6];
-	static int[] sideAmount = new int[6];
-	static int[] remove = new int[6];
-	static int[] rest1 = new int[6]; // 국 잔여량
-	static int[] rest2 = new int[6]; // 반찬 잔여량
+	static String[] soupName = { "갈비탕", "육개장" , "된장찌개" , "김치찌개" , "부대찌개" }; // 탕종류 배열 0열에 육개장 1열에 김치찌개 이런식
+	static int[] soupPrice = new int[5];
+	static int[] soupAmount = new int[5]; // 0갈비탕 1육개장 2된장찌개 3김치찌개 4부대찌개
+	static String[] sideName = { "무말랭이" , "메추리알" , "콩자반" , "멸치볶음" , "배추김치" };// 반찬류 배열 0열에 배추김치, 1열에 갓김치
+	static int[] sidePrice  = new int[5];
+	static int[] sideAmount = new int[5];
+	static int[] remove = new int[5];
+	static int[] rest1 = new int[5]; // 국 잔여량
+	static int[] rest2 = new int[5]; // 반찬 잔여량
 
 	boolean flag = true;
 
 
 
-	//명시적생성자 
+	
 
-	public Manager(String[] soupName ,int[] soupPrice, int[] soupAmount, int[] sidePrice, int[] sideAmount,String[] sideName ,int[] remove, int[] rest1, int[] rest2) {
-		this.soupName = soupName;
-		this.soupPrice = soupPrice;
-		this.soupAmount = soupAmount;
-		this.sideAmount = sideAmount;
-		this.sidePrice = sidePrice;
-		this.sideName = sideName;
 
-	}
-
-	//기본 생성자
-	public Manager() {
-
-	}
 
 
 
@@ -328,7 +315,7 @@ public class Manager implements Food{
 			
 		}
 		
-		System.out.println("---------------------------------------------------------------------------");
+		System.out.println("---------------------------------------------------");
 		
 		for(int i = 0; i < sideName.length; i++) {
 			
