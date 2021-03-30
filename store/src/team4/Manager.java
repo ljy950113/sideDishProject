@@ -15,7 +15,7 @@ public class Manager implements Food{
 	static String[] sideName = { "무말랭이" , "메추리알" , "콩자반" , "멸치볶음" , "배추김치" };// 반찬류 배열 0열에 배추김치, 1열에 갓김치
 	static int[] sidePrice  = new int[5];
 	static int[] sideAmount = new int[5];
-	static int[] remove = new int[5];
+	static int[] remove = new int[5]; 
 	static int[] rest1 = new int[5]; // 국 잔여량
 	static int[] rest2 = new int[5]; // 반찬 잔여량
 
@@ -45,7 +45,7 @@ public class Manager implements Food{
 
 			switch(select) {
 			case 1: password();  break;
-			case 2: customerSearch(); break;  
+			case 2: Buyer.buyerMode(); break;  
 			case 3: System.out.println("시스템을 종료합니다."); flag = false; break;
 			default : System.out.println("메뉴를 다시 선택하세요");
 			}
@@ -264,32 +264,40 @@ public class Manager implements Food{
 
 
 	public void customer() { //고객 관리 화면
-		System.out.println("[ 고객관리  ]");
-		System.out.println("고객No. | 총 포인트");
+		System.out.println("                  [ 고객 관리  ]                      ");
+		System.out.println("---------------------------------------------------");
+		System.out.println("|     No.     |      고객명           |     총 구매금액          |");
+		System.out.println("---------------------------------------------------");
+		
+		
+		
+		for(int i = 0; i<=Buyer.numbuyer; i++) {
+			System.out.println("\t" +Buyer.buyNo[i] + "\t\t" + Buyer.buyerName[i] + "\t\t" + Buyer.buyerSum);
+		}
 	}
 
 
 
-	public void search() { //입고된 메뉴 조회 화면    사실상 돌아가겠습니까? 물어볼 필요가없이 돌아가야할거같습니다.
+	public void search() { //입고된 메뉴 조회 화면
 		int i;
-		System.out.println("                       [ 제품 조회  ]                       ");
+		System.out.println("                    [ 제품 조회  ]                    ");
 		System.out.println();
-		System.out.println("                         <<국류>>                         ");
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |     메뉴평점          |");
-		System.out.println("--------------------------------------------------------------------");
+		System.out.println("                      <<국류>>                      ");
+		System.out.println("---------------------------------------------------");
+		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |");
+		System.out.println("---------------------------------------------------");
 		for (  i = 0; i < soupName.length; i++) {
-			System.out.println("\t" + soupName[i] + "\t\t" + soupAmount[i]+ "개" + "\t\t" + rest1[i]+ "개" + "\t\t" + "메뉴평점");
+			System.out.println("\t" + soupName[i] + "\t\t" + soupAmount[i]+ "개" + "\t\t" + rest1[i]+ "개");
 		}
 
 		
 		System.out.println();
-		System.out.println("                        <<반찬류>>                        ");
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |     메뉴평점          |");
-		System.out.println("--------------------------------------------------------------------");
+		System.out.println("                        <<반찬류>>                   ");
+		System.out.println("---------------------------------------------------");
+		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |");
+		System.out.println("---------------------------------------------------");
 		for (  i = 0; i < sideName.length; i++) {
-			System.out.println("\t" + sideName[i] + "\t\t" + sideAmount[i]+ "개" + "\t\t" + rest2[i]+ "개" + "\t\t" + "메뉴평점");
+			System.out.println("\t" + sideName[i] + "\t\t" + sideAmount[i]+ "개" + "\t\t" + rest2[i]+ "개");
 		}
 		System.out.println();
 		managerMode();
@@ -303,30 +311,7 @@ public class Manager implements Food{
 	}
 
 
-	public void customerSearch() { //고객한테 보일 메뉴판
-		
-		System.out.println("                   <<고객 모드>>                   ");
-		System.out.println();
-		System.out.println("---------------------------------------------------");
-		System.out.println("|     메뉴명          |      남은 수량           |      가격           |");
-		System.out.println("---------------------------------------------------");
-		for(int i = 0; i < soupName.length; i++) {
-			System.out.println("\t" + soupName[i] + "\t\t" + rest1[i]+ "개" + "\t\t" + soupPrice[i]+"원");
-			
-		}
-		
-		System.out.println("---------------------------------------------------");
-		
-		for(int i = 0; i < sideName.length; i++) {
-			
-			System.out.println("\t" + sideName[i] + "\t\t" + rest2[i]+ "개" + "\t\t" + sidePrice[i]+"원");
-		}
-		
-		
-		Buyer.buyerMethod();
-		
-		
-	}
+	
 
 
 
