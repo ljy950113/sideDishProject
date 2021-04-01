@@ -77,8 +77,6 @@ public class Buyer3 extends Manager3{
 			System.out.println("고객님의 휴대번호 뒷자리 4개를 입력해주세요.");
 			System.out.print("입력 >");
 			buyNo[0] = Business3.sc.nextInt();
-			//buyNo[numbuyer] = sc.nextInt();
-			//numbuyer++; //고객을 1명 이상으로 등록할때 사용
 			System.out.println("신규 고객으로 등록되셨습니다 !!!");
 			System.out.println();
 			buyerMode();
@@ -150,8 +148,7 @@ public class Buyer3 extends Manager3{
 			productName = Business3.sc.next();
 			System.out.println("구매하실 상품의 수량을 입력해주세요");
 			productCount = Business3.sc.nextInt();
-			
-			//moneyPoket[i]-=Manager3.soupPrice[i]*productCount; // 고객의 소지금액 - 국가격*국 수량
+	
 			for( i=0; i<5; i++) {
 			if(productName.equals(Manager3.soupName.get(i))) {
 				Manager3.rest1[i]-=productCount;
@@ -174,16 +171,6 @@ public class Buyer3 extends Manager3{
 			}else {
 				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
 			}
-//두번째 if
-			/*if(productName.equals(Manager3.soupName.get(i))) {
-				Manager3.rest1[1]-=productCount;
-				
-				if(change < (Manager3.sidePrice[1]*productCount) && change == 0) 	System.out.println("잔액이 부족합니다.");
-					change -= Manager3.sidePrice[1]*productCount;
-			}else {
-				System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-			}*/
-		
 			System.out.print("계속 하시겠습니까?(Y/N)");
 			ys = Business3.sc.next();
 			if(ys.equals("n") || ys.equals("N")) {
@@ -194,15 +181,6 @@ public class Buyer3 extends Manager3{
 			}else {
 				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
 			}
-//세번째
-			/*if(productName.equals(Manager3.soupName[2])) {
-				Manager3.rest1[2]-=productCount;
-				change = Manager3.sidePrice[2]*productCount;
-				if(change < Manager3.sidePrice[2]*productCount) 	System.out.println("잔액이 부족합니다."); 
-			}else {
-				System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-			}*/
-		
 			System.out.print("계속 하시겠습니까?(Y/N)");
 			 ys = Business3.sc.next();
 			if(ys.equals("n") || ys.equals("N")) {
@@ -248,50 +226,6 @@ public class Buyer3 extends Manager3{
 				}else {
 					System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
 				}
-					
-					/*if(productName.equals(Manager3.soupName[1])) {
-						Manager3.rest1[1]-=productCount;
-				
-					if(!productName.equals(Manager3.soupName[1])) {
-							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-						}
-					}
-					if(Manager3.rest1[1] < productCount) {
-						System.out.println("구매하시려는 물품의 재고가 부족합니다.");
-					}
-					
-					if(productName.equals(Manager3.soupName[2])) {
-						Manager3.rest1[2]-=productCount;
-				
-					if(!productName.equals(Manager3.soupName[2])) {
-							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-						}
-					}
-					if(Manager3.rest1[2] < productCount) {
-						System.out.println("구매하시려는 물품의 재고가 부족합니다.");
-					}
-					
-					if(productName.equals(Manager3.soupName[3])) {
-						Manager3.rest1[3]-=productCount;
-				
-					if(!productName.equals(Manager3.soupName[3])) {
-							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-						}
-					}
-					if(Manager3.rest1[3] < productCount) {
-						System.out.println("구매하시려는 물품의 재고가 부족합니다.");
-					}
-					
-					if(productName.equals(Manager3.soupName[4])) {
-						Manager3.rest1[4]-=productCount;
-				
-					if(!productName.equals(Manager3.soupName[4])) {
-							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-						}
-					}
-					if(Manager3.rest1[4] < productCount) {
-						System.out.println("구매하시려는 물품의 재고가 부족합니다.");
-					}*/
 					break;
 			case 3: buyerMode(); break;
 			default :System.out.println("잘못입력하셨습니다."); buyerPurchase(); break;
