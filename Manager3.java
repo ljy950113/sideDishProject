@@ -263,23 +263,36 @@ public class Manager3 implements Food {
 
 	public void search() { //입고된 메뉴 조회 화면    사실상 돌아가겠습니까? 물어볼 필요가없이 돌아가야할거같습니다.
 		int i;
+		soupName.add("갈비탕"); 
+		soupName.add("육개장");
+		soupName.add("된장찌개");
+		soupName.add("김치찌개");
+		soupName.add("부대찌개");
+		
+		sideName.add("무말랭이");
+		sideName.add("메추리알");
+		sideName.add("콩자반");
+		sideName.add("멸치볶음");
+		sideName.add("배추김치");
+		
 		System.out.println("                       [ 제품 조회  ]                       ");
 		System.out.println();
 		System.out.println("                         <<국류>>                         ");
 		System.out.println("--------------------------------------------------------------------");
 		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |     메뉴평점          |");
 		System.out.println("--------------------------------------------------------------------");
-		for (  i = 0; i < soupName.size(); i++) {
+		for (  i = 0; i < 5; i++) {
 			System.out.println("\t" + soupName.get(i) + "\t\t" + soupAmount[i]+ "개" + "\t\t" + rest1[i]+ "개" + "\t\t" + "메뉴평점");
+			
 		}
-
+		
 		
 		System.out.println();
 		System.out.println("                        <<반찬류>>                        ");
 		System.out.println("--------------------------------------------------------------------");
 		System.out.println("|     메뉴명          |     입고 수량          |     잔여 갯수          |     메뉴평점          |");
 		System.out.println("--------------------------------------------------------------------");
-		for (  i = 0; i < sideName.size(); i++) {
+		for (  i = 0; i < 5; i++) {
 			System.out.println("\t" + sideName.get(i) + "\t\t" + sideAmount[i]+ "개" + "\t\t" + rest2[i]+ "개" + "\t\t" + "메뉴평점");
 		}
 		System.out.println();
