@@ -24,7 +24,7 @@ public class Buyer3 extends Manager3{
 
 	static int money = 0; //고객 소지 금액
 	static int change = 0; //고객 잔돈 
-	
+	static int[] point = new int[1];
 	
 	static String yesOrNo = null; //계속 구매 여부
 
@@ -110,14 +110,14 @@ public class Buyer3 extends Manager3{
 			System.out.println("--------------------------------------------------------------------");
 			System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
 			System.out.println("--------------------------------------------------------------------");
-			for(int i = 0; i < Manager3.soupName.size(); i++) {
+			for(int i = 0; i < 5; i++) {
 				System.out.println("\t" + Manager3.soupName.get(i) + "\t\t" + Manager3.rest1[i]+ "개" + "\t\t" + Manager3.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
 				
 			}
 
 			System.out.println("--------------------------------------------------------------------");
 
-			for(int i = 0; i < Manager3.sideName.size(); i++) {
+			for(int i = 0; i < 5; i++) {
 
 				System.out.println("\t" + Manager3.sideName.get(i) + "\t\t" + Manager3.rest2[i]+ "개" + "\t\t" + Manager3.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
 			}
@@ -126,7 +126,7 @@ public class Buyer3 extends Manager3{
 			if(run) {
 			System.out.println("현재 소지금액을 입력해주세요.");
 			System.out.print("입력 > ");
-			money = Business3.sc.nextInt();
+			change = Business3.sc.nextInt();
 			run = false;
 			}
 
@@ -141,22 +141,24 @@ public class Buyer3 extends Manager3{
 			System.out.println("--------------------------------------------------------------------");
 			System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
 			System.out.println("--------------------------------------------------------------------");
-			for( i = 0; i < Manager3.soupName.size(); i++) {
+			for( i = 0; i < 5; i++) {
 				System.out.println("\t" + Manager3.soupName.get(i) + "\t\t" + Manager3.rest1[i]+ "개" + "\t\t" + Manager3.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
 			}
 			
 			
 			System.out.println("구매하실 상품명을 입력해주세요");
 			productName = Business3.sc.next();
-			System.out.println("구매하신 상품의 수량을 입력해주세요");
+			System.out.println("구매하실 상품의 수량을 입력해주세요");
 			productCount = Business3.sc.nextInt();
 			
 			//moneyPoket[i]-=Manager3.soupPrice[i]*productCount; // 고객의 소지금액 - 국가격*국 수량
-			for( i=0; i<Manager3.sideName.size(); i++) {
+			for( i=0; i<5; i++) {
 			if(productName.equals(Manager3.soupName.get(i))) {
 				Manager3.rest1[i]-=productCount;
-				change = Manager3.sidePrice[i]*productCount;
-			if(change < Manager3.sidePrice[i]*productCount) 	System.out.println("잔액이 부족합니다."); 
+				change -= Manager3.soupPrice[i]*productCount;
+			if(change < (Manager3.soupPrice[i]*productCount)&& change == 0) {
+				
+				System.out.println("잔액이 부족합니다."); }
 			if(!productName.equals(Manager3.soupName.get(i))) 
 				System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
 			}
@@ -173,13 +175,14 @@ public class Buyer3 extends Manager3{
 				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
 			}
 //두번째 if
-			if(productName.equals(Manager3.soupName.get(i))) {
+			/*if(productName.equals(Manager3.soupName.get(i))) {
 				Manager3.rest1[1]-=productCount;
-				change = Manager3.sidePrice[1]*productCount;
-				if(change < Manager3.sidePrice[1]*productCount) 	System.out.println("잔액이 부족합니다."); 
+				
+				if(change < (Manager3.sidePrice[1]*productCount) && change == 0) 	System.out.println("잔액이 부족합니다.");
+					change -= Manager3.sidePrice[1]*productCount;
 			}else {
 				System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-			}
+			}*/
 		
 			System.out.print("계속 하시겠습니까?(Y/N)");
 			ys = Business3.sc.next();
@@ -216,20 +219,22 @@ public class Buyer3 extends Manager3{
 				System.out.println("--------------------------------------------------------------------");
 				System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
 				System.out.println("--------------------------------------------------------------------");
-				for( i = 0; i < Manager3.sideName.size(); i++) {
+				for( i = 0; i < 5; i++) {
 					System.out.println("\t" + Manager3.sideName.get(i) + "\t\t" + Manager3.rest2[i]+ "개" + "\t\t" + Manager3.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
 				}
 				System.out.println("구매하실 상품명을 입력해주세요");
 				productName = Business3.sc.next();
-				System.out.println("구매하신 상품의 수량을 입력해주세요");
+				System.out.println("구매하실 상품의 수량을 입력해주세요");
 				productCount = Business3.sc.nextInt();
 				
-				for( i=0; i<Manager3.sideName.size(); i++) {
-					if(productName.equals(Manager3.soupName.get(i))) {
-						Manager3.rest1[i]-=productCount;
-						change = Manager3.sidePrice[i]*productCount;
-					if(change < Manager3.sidePrice[i]*productCount) 	System.out.println("잔액이 부족합니다."); 
-					if(!productName.equals(Manager3.soupName.get(i))) 
+				for( i=0; i<5; i++) {
+					if(productName.equals(Manager3.sideName.get(i))) {
+						Manager3.rest2[i]-=productCount;
+						
+					if(change < (Manager3.sidePrice[i]*productCount) && change == 0) {
+						change -= Manager3.sidePrice[i]*productCount;
+						System.out.println("잔액이 부족합니다.");} 
+					if(!productName.equals(Manager3.sideName.get(i))) 
 						System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
 					}
 					}
@@ -293,6 +298,8 @@ public class Buyer3 extends Manager3{
 			}
 	}//end purchase
 	public void search() {
+		System.out.println("<<구매내역>>");
+		System.out.println("-------------------------------------------------");
 		System.out.println("");
 	}
 	
