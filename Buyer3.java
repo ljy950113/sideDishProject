@@ -171,26 +171,6 @@ public class Buyer3 extends Manager3{
 			}else {
 				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
 			}
-			System.out.print("계속 하시겠습니까?(Y/N)");
-			ys = Business3.sc.next();
-			if(ys.equals("n") || ys.equals("N")) {
-				run = false;
-				buyerMode();
-			}else if(ys.equals("y") || ys.equals("Y")) {
-				buyerPurchase();
-			}else {
-				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
-			}
-			System.out.print("계속 하시겠습니까?(Y/N)");
-			 ys = Business3.sc.next();
-			if(ys.equals("n") || ys.equals("N")) {
-				run = false;
-				buyerMode();
-			}else if(ys.equals("y") || ys.equals("Y")) {
-				buyerPurchase();
-			}else {
-				System.out.println("잘못된 입력입니다. 다시 입력해주세요."); break;
-			}
 			case 2:
 				System.out.println("                             <<구매 모드>>                   ");
 				System.out.println();
