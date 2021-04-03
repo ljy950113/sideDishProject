@@ -15,7 +15,7 @@ public class Manager implements Food{
 	
 	boolean flag = true;
 	
-	void add() {
+	void add() { 
 		
 	}
 	
