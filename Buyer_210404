@@ -36,18 +36,10 @@ public class Buyer extends Manager{
 
 	static int buyerSum = 0; //총 구매금액 
 
-	public void useList() {  //soupName 리스트
-		list1.add("갈비탕");
-		list1.add("육개장");
-		list1.add("된장찌개");
-		list1.add("김치찌개");
-		list1.add("부대찌개");
-	}
-
 	public static void buyerMode() { //고객 메인화면
 
 		System.out.println(" [ 고객 모드 ] ");
-		System.out.println("1.  등록");
+		System.out.println("1. 등록");
 		System.out.println("2. 구매");
 		System.out.println("3. 조회");
 		System.out.println("4. 종료");
@@ -101,256 +93,224 @@ public class Buyer extends Manager{
 		}
 
 		if(customerTel.equals(buyNo[0])) {
-
+			
 			System.out.println();
 			System.out.println(buyerName[0] + "고객님 저희 반찬가게를 방문해주셔서 감사합니다!");
 			System.out.println();
-
-			System.out.println("                             [ 구매 모드 ]                   ");
-			System.out.println();
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
-			System.out.println("------------------------------------------------------------------------------");
-
-			for(int i = 0; i <  soupName.size(); i++) {
-				System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "개" + "\t\t" + Manager.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
-			}
-
-			System.out.println("--------------------------------------------------------------------");
-
-			for(int i = 0; i < sideName.size(); i++) {
-				System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + (Manager.rest2[i])+ "개" + "\t\t" + Manager.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
-			}
-
-			if(flag) {
-				System.out.println("현재 소지금액을 입력해주세요.");
-				System.out.print("입력 > ");
-				change = Business.sc.nextInt();
-				flag = false;
-			}
-
-			while(run) {
-
-				//구매화면 반복
-				System.out.println("[구매하기]  1. 국류 | 2. 반찬  | 3. 돌아가기");
-				System.out.print("선택 >");
-				int select = Business.sc.nextInt();
-				int sum = 0;
-				int i;
-
-				switch(select) {
-				case  1 :
-					System.out.println("                             [ 구매 모드 ]                   ");
-					System.out.println();
-					System.out.println("------------------------------------------------------------------------------");
-					System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
-					System.out.println("------------------------------------------------------------------------------");
-
-					for( i = 0; i < soupName.size(); i++) {
-						System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "개" + "\t\t" + Manager.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
-					}
-
-					System.out.println("구매하실 상품명을 입력해주세요.");
-					System.out.print("입력 > ");
-					productName = Business.sc.next();
-
-					System.out.println("구매하실 상품의 수량을 입력해주세요.");
-					System.out.print("입력 > ");
-					productCount = Business.sc.nextInt();
-
-					for( i = 0;  i < soupName.size(); i++) {
-						if(productName.equals(Manager.soupName.get(i))) { 
-							//조회부분이랑 연결하려고 정연씨가 사용했던 변수도 같이 넣었어요. 수정이 필요할수도 있는 부분이라 주석으로 남깁니다.
-							if(rest1[i] == 0) {
-								System.out.println("재고가 부족합니다.");
-								break;
-							} else {
-								Manager.rest1[i]-=productCount;
-								change -= Manager.soupPrice[i] * productCount;
-								buyerSum += Manager.soupPrice[i] * productCount;
-								point += Manager.soupPrice[i] * 0.03;
-								pointTotal[0] = point;
-
-								buySoup.add(productName);
-								priceSp.add(productCount);
-								soupNum++;
-								totalNum++;
-							}
-
-							if(rest1[i] <= 0) {
-								System.out.println("재고가 부족합니다.");
-								break;
-							}
-
-							if(!productName.equals(Manager.soupName.get(i))) {
-								System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-							}
-						}
-					}
-
-					System.out.println("계속 구매하시겠습니까?");
-					System.out.print("입력(Y/N) >");
-					String ys = Business.sc.next();
-					if(ys.equals("n") || ys.equals("N")) {
-						run = false;
-						//buyerMode(); 이걸 하면 재구매 안하는데 메뉴판이 떠버려서 주석처리했어요.
-					}else if(ys.equals("y") || ys.equals("Y")) {
-						run = true; 
-						// ↑ buyerPurchase() 재구매시에 핸드폰번호를 다시 물어보는것부터 시작해서 어자피 같은 사람이 구매하는거라 불필요한 과정같아서 변경했어요.
-					}else {
-						System.out.println("잘못된 입력입니다. 다시 입력해 주세요."); break;
-					}
-					break;
-
-				case 2 :
-					System.out.println("                             [ 구매 모드 ]                   ");
-					System.out.println();
-					System.out.println("------------------------------------------------------------------------------");
-					System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
-					System.out.println("------------------------------------------------------------------------------");
-
-					for( i = 0; i < sideName.size(); i++) {
-						System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i]+ "개" + "\t\t" + Manager.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
-					}
-
-					System.out.println("구매하실 상품명을 입력해 주세요.");
-					System.out.print("입력 > ");
-					productName = Business.sc.next();
-
-					System.out.println("구매하실 상품의 수량을 입력해 주세요. ");
-					System.out.print("입력 > ");
-					productCount = Business.sc.nextInt();
-
-					for( i = 0; i < sideName.size(); i++) {
-						if(productName.equals(Manager.sideName.get(i))) { 							
-							//조회부분이랑 연결하려고 정연씨가 사용했던 변수도 같이 넣었어요. 수정이 필요할수도 있는 부분이라 주석으로 남깁니다.
-							if(rest2[i] == 0) {
-								System.out.println("재고가 부족합니다.");
-								break;
-							} else {
-								Manager.rest2[i]-=productCount;
-								change -= Manager.sidePrice[i] * productCount;
-								buyerSum += Manager.sidePrice[i] * productCount;
-								point += Manager.sidePrice[i] * 0.02;
-								pointTotal[0] = point;
-
-								buySide.add(productName);
-								priceSe.add(productCount);
-								sideNum++;
-								totalNum++;
-							}
-							if(change < (Manager.sidePrice[i]*productCount) && change == 0) {
-								change -= Manager.sidePrice[i]*productCount;
-								System.out.println("잔액이 부족합니다.");
-							} 
-
-							if(rest2[i] <= 0) {
-								System.out.println("재고가 부족합니다.");
-								break;
-							}
-
-							if(!productName.equals(Manager.sideName.get(i))) {
-								System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-							}
-						}
-					}
-					System.out.println("계속 구매하시겠습니까?");
-					System.out.print("입력(Y/N) >");
-					ys = Business.sc.next();
-
-					if(ys.equals("n") || ys.equals("N")) {
-						run = false;
-						break;
-						//buyerMode(); 이걸 하면 재구매 안하는데 메뉴판이 떠버려서 주석처리했어요.
-					}else if(ys.equals("y") || ys.equals("Y")) {
-						run = true;
-						// ↑ buyerPurchase() 재구매시에 핸드폰번호를 다시 물어보는것부터 시작해서 어자피 같은 사람이 구매하는거라 불필요한 과정같아서 변경했어요.
-					}else {
-						System.out.println("잘못된 입력입니다. 다시 입력해 주세요."); break;
-					}
-					break;
-
-				case 3 :
-					buyerPurchase();
-					break;
-
-				default : 
-					System.out.println("잘못된 입력입니다. 다시 입력해 주세요.");
-					buyerPurchase(); 
-					break;
-				} //switch문 끝
-			} //while문 끝
-
-			//포인트 적립 화면
-			System.out.println("                             [ 계산 화면 ]                   ");
-			System.out.println("고객님이 구매하신 금액은 " + buyerSum + "원 입니다.");
-			System.out.println("잔돈 " + change  + "원 입니다.");
-			System.out.println(pointTotal[0] + " 포인트가 적립되었습니다.");
-			System.out.println();
-
-			//평가 화면
-			System.out.println("                             [ 평가 화면 ]                   ");
-			System.out.println("본 반찬가게에 대해 고객님의 평가를 받고 있습니다.");
-			System.out.println("평가를 희망하시는 경우 Y를 희망하지 않으면 N을 눌러주세요.");
-			System.out.print("입력 (Y/N) >");
-			yesOrNo = Business.sc.next();
-
-			if(yesOrNo.equals("y") | yesOrNo.equals("y")) {
-				System.out.println("평가에 참여해주셔서 감사합니다. 평가 부탁드립니다.");
-				System.out.println(" 5. 아주 좋았다 " + "\t\t" + " 4. 좋았다. " + "\t\t" + " 3. 보통이다. " + "\t\t" + " 2. 별로였다. " + "\t\t" + " 1. 매우 별로였다. ");
-				System.out.print("평가 입력(숫자로만 입력해주세요. (1~5)> ");
-				rate = Business.sc.nextInt();
-				rating[0] = rate;
-
-				System.out.println("고객님의 소중한 의견 감사합니다.");
-				System.out.println("* 이용해 주셔서 감사합니다. *");
-			} else if(yesOrNo.equals("N") | yesOrNo.equals("n")) {
-				System.out.println("* 이용해 주셔서 감사합니다. *");
-			} else {
-				System.out.println("y 또는 n을 입력하여 주시기 바랍니다.");
-			}
-
-		} else if (customerTel .equals("0000")) { 
-			//말씀주신 방법말고 이 방법으로 해봤는데, 
-			//여기서 while문에 들어가는건 run = true; 로 해서 반복 돌리려했는데 안되어서요.
-			//이 화면에는 미등록 고객이라 포인트 적립 문구를 지워서 출력해야할 것 같아서
-			//while문 내용이랑 그 아래 계산화면, 출력화면을 모두 작성하려고 하는데 너무 길어질까봐 염려되기도 해요.
-			//이 부분 확인 부탁드릴게요.
 			
+		} else if (customerTel .equals("0000")) { 
+
 			System.out.println();
 			System.out.println("미등록고객님 저희 반찬가게를 방문해주셔서 감사합니다!");
 			System.out.println();
-
-			System.out.println("                             [ 구매 모드 ]                   ");
-			System.out.println();
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
-			System.out.println("------------------------------------------------------------------------------");
-
-			for(int i = 0; i <  soupName.size(); i++) {
-				System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "개" + "\t\t" + Manager.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
-			}
-
-			System.out.println("--------------------------------------------------------------------");
-
-			for(int i = 0; i < sideName.size(); i++) {
-				System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + (Manager.rest2[i])+ "개" + "\t\t" + Manager.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
-			}
-
-			if(flag) {
-				System.out.println("현재 소지금액을 입력해주세요.");
-				System.out.print("입력 > ");
-				change = Business.sc.nextInt();
-				flag = false;
-			}
-			run = true;
 			
-		} else if(customerTel.equals("3")) { //if(customerTel == buyNo[0]) 문 끝
+		} else if(customerTel.equals("3")) { 
 			buyerNumber();
 		} else {
 			System.out.println("번호를 다시 입력해 주시기 바랍니다.");
 			buyerMode();
 		}
+
+		System.out.println("                             [ 구매 모드 ]                   ");
+		System.out.println();
+		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
+		System.out.println("------------------------------------------------------------------------------");
+
+		for(int i = 0; i <  soupName.size(); i++) {
+			System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "개" + "\t\t" + Manager.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
+		}
+
+		System.out.println("--------------------------------------------------------------------");
+
+		for(int i = 0; i < sideName.size(); i++) {
+			System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + (Manager.rest2[i])+ "개" + "\t\t" + Manager.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
+		}
+
+		if(flag) {
+			System.out.println("현재 소지금액을 입력해주세요.");
+			System.out.print("입력 > ");
+			change = Business.sc.nextInt();
+			flag = false;
+		}
+
+		while(run) {
+
+			//구매화면 반복
+			System.out.println("[구매하기]  1. 국류 | 2. 반찬  | 3. 돌아가기");
+			System.out.print("선택 >");
+			int select = Business.sc.nextInt();
+			int sum = 0;
+			int i;
+
+			switch(select) {
+			case  1 :
+				System.out.println("                             [ 구매 모드 ]                   ");
+				System.out.println();
+				System.out.println("------------------------------------------------------------------------------");
+				System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
+				System.out.println("------------------------------------------------------------------------------");
+
+				for( i = 0; i < soupName.size(); i++) {
+					System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "개" + "\t\t" + Manager.soupPrice[i]+"원"+ "\t\t" + "추천메뉴");
+				}
+
+				System.out.println("구매하실 상품명을 입력해주세요.");
+				System.out.print("입력 > ");
+				productName = Business.sc.next();
+
+				System.out.println("구매하실 상품의 수량을 입력해주세요.");
+				System.out.print("입력 > ");
+				productCount = Business.sc.nextInt();
+
+				for( i = 0;  i < soupName.size(); i++) {
+					if(productName.equals(Manager.soupName.get(i))) { 
+						//조회부분이랑 연결하려고 정연씨가 사용했던 변수도 같이 넣었어요. 수정이 필요할수도 있는 부분이라 주석으로 남깁니다.
+						if(rest1[i] == 0) {
+							System.out.println("재고가 부족합니다.");
+							break;
+						} else {
+							Manager.rest1[i]-=productCount;
+							change -= Manager.soupPrice[i] * productCount;
+							buyerSum += Manager.soupPrice[i] * productCount;
+							point += Manager.soupPrice[i] * 0.03;
+							pointTotal[0] = point;
+
+							buySoup.add(productName);
+							priceSp.add(productCount);
+							soupNum++;
+							totalNum++;
+						}
+
+						if(!productName.equals(Manager.soupName.get(i))) {
+							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
+						}
+					}
+				}
+
+				System.out.println("계속 구매하시겠습니까?");
+				System.out.print("입력(Y/N) >");
+				String ys = Business.sc.next();
+				if(ys.equals("n") || ys.equals("N")) {
+					run = false;
+					//buyerMode(); 이걸 하면 재구매 안하는데 메뉴판이 떠버려서 주석처리했어요.
+				}else if(ys.equals("y") || ys.equals("Y")) {
+					run = true; 
+					// ↑ buyerPurchase() 재구매시에 핸드폰번호를 다시 물어보는것부터 시작해서 어자피 같은 사람이 구매하는거라 불필요한 과정같아서 변경했어요.
+				}else {
+					System.out.println("잘못된 입력입니다. 다시 입력해 주세요."); break;
+				}
+				break;
+
+			case 2 :
+				System.out.println("                             [ 구매 모드 ]                   ");
+				System.out.println();
+				System.out.println("------------------------------------------------------------------------------");
+				System.out.println("|     메뉴명          |      남은 수량           |      가격           |      추천메뉴         |");
+				System.out.println("------------------------------------------------------------------------------");
+
+				for( i = 0; i < sideName.size(); i++) {
+					System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i]+ "개" + "\t\t" + Manager.sidePrice[i]+"원"+ "\t\t" + "추천메뉴");
+				}
+
+				System.out.println("구매하실 상품명을 입력해 주세요.");
+				System.out.print("입력 > ");
+				productName = Business.sc.next();
+
+				System.out.println("구매하실 상품의 수량을 입력해 주세요. ");
+				System.out.print("입력 > ");
+				productCount = Business.sc.nextInt();
+
+				for( i = 0; i < sideName.size(); i++) {
+					if(productName.equals(Manager.sideName.get(i))) { 							
+						//조회부분이랑 연결하려고 정연씨가 사용했던 변수도 같이 넣었어요. 수정이 필요할수도 있는 부분이라 주석으로 남깁니다.
+						if(rest2[i] == 0) {
+							System.out.println("재고가 부족합니다.");
+							break;
+						} else {
+							Manager.rest2[i]-=productCount;
+							change -= Manager.sidePrice[i] * productCount;
+							buyerSum += Manager.sidePrice[i] * productCount;
+							point += Manager.sidePrice[i] * 0.02;
+							pointTotal[0] = point;
+
+							buySide.add(productName);
+							priceSe.add(productCount);
+							sideNum++;
+							totalNum++;
+						}
+						if(change < (Manager.sidePrice[i]*productCount) && change == 0) {
+							change -= Manager.sidePrice[i]*productCount;
+							System.out.println("잔액이 부족합니다.");
+						} 
+
+						if(!productName.equals(Manager.sideName.get(i))) {
+							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
+						}
+					}
+				}
+				System.out.println("계속 구매하시겠습니까?");
+				System.out.print("입력(Y/N) >");
+				ys = Business.sc.next();
+
+				if(ys.equals("n") || ys.equals("N")) {
+					run = false;
+					break;
+					//buyerMode(); 이걸 하면 재구매 안하는데 메뉴판이 떠버려서 주석처리했어요.
+				}else if(ys.equals("y") || ys.equals("Y")) {
+					run = true;
+					// ↑ buyerPurchase() 재구매시에 핸드폰번호를 다시 물어보는것부터 시작해서 어자피 같은 사람이 구매하는거라 불필요한 과정같아서 변경했어요.
+				}else {
+					System.out.println("잘못된 입력입니다. 다시 입력해 주세요."); break;
+				}
+				break;
+
+			case 3 :
+				buyerPurchase();
+				break;
+
+			default : 
+				System.out.println("잘못된 입력입니다. 다시 입력해 주세요.");
+				buyerPurchase(); 
+				break;
+			} //switch문 끝
+		} //while문 끝
+
+		//포인트 적립 화면
+		System.out.println("                             [ 계산 화면 ]                   ");
+		System.out.println("고객님이 구매하신 금액은 " + buyerSum + "원 입니다.");
+		System.out.println("잔돈 " + change  + "원 입니다.");
+
+		if(customerTel.equals(buyNo[0])) {
+		System.out.println(pointTotal[0] + " 포인트가 적립되었습니다.");
+		System.out.println();
+		} else {
+			System.out.println();
+		}
+
+		//평가 화면
+		System.out.println("                             [ 평가 화면 ]                   ");
+		System.out.println("본 반찬가게에 대해 고객님의 평가를 받고 있습니다.");
+		System.out.println("평가를 희망하시는 경우 Y를 희망하지 않으면 N을 눌러주세요.");
+		System.out.print("입력 (Y/N) >");
+		yesOrNo = Business.sc.next();
+
+		if(yesOrNo.equals("y") | yesOrNo.equals("y")) {
+			System.out.println("평가에 참여해주셔서 감사합니다. 평가 부탁드립니다.");
+			System.out.println(" 5. 아주 좋았다 " + "\t\t" + " 4. 좋았다. " + "\t\t" + " 3. 보통이다. " + "\t\t" + " 2. 별로였다. " + "\t\t" + " 1. 매우 별로였다. ");
+			System.out.print("평가 입력(숫자로만 입력해주세요. (1~5)> ");
+			rate = Business.sc.nextInt();
+			rating[0] = rate;
+
+			System.out.println("고객님의 소중한 의견 감사합니다.");
+			System.out.println("* 이용해 주셔서 감사합니다. *");
+			
+		} else if(yesOrNo.equals("N") | yesOrNo.equals("n")) {
+			System.out.println("* 이용해 주셔서 감사합니다. *");
+		} else {
+			System.out.println("y 또는 n을 입력하여 주시기 바랍니다.");
+		}
+
 	}
 
 	public static void Search() { //고객 조회화면
