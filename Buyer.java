@@ -177,10 +177,16 @@ public class Buyer extends Manager{
 				for( i = 0;  i < soupAmount.length; i++) {
 					if(productName.equals(Manager.soupName.get(i))) { 
 						//조회부분이랑 연결하려고 정연씨가 사용했던 변수도 같이 넣었어요. 수정이 필요할수도 있는 부분이라 주석으로 남깁니다.
-						if(rest1[i] == 0) {
+						if(Manager.rest1[i] < productCount) {
 							System.out.println("재고가 부족합니다.");
+							buyerMode();
 							break;
-						} else {
+						} else if(change < (Manager.soupPrice[i]* productCount)){
+							System.out.println("고객님의 잔액이 부족합니다.");
+							buyerMode();
+						}else if( ! productName.equals(Manager.soupName.get(i))) {
+							System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
+						}else {						
 							Manager.rest1[i]-=productCount;
 							change -= Manager.soupPrice[i] * productCount;
 							buyerSum += Manager.soupPrice[i] * productCount;
@@ -191,15 +197,8 @@ public class Buyer extends Manager{
 							priceSp.add(productCount);
 							soupNum++;
 							totalNum++;
-						}
-						if(change < (Manager.sidePrice[i]*productCount) && change == 0) {
-							change -= Manager.sidePrice[i]*productCount;
-							System.out.println("잔액이 부족합니다.");
-						}
-						
-					}else if	(!productName.equals(Manager.sideName.get(i))) {
-						System.out.println("해당 제품은 저희 가게에 있지 않습니다.");
-					} 
+						}	
+				}
 				}
 
 				System.out.println("계속 구매하시겠습니까?");
@@ -216,7 +215,7 @@ public class Buyer extends Manager{
 					System.out.println("잘못된 입력입니다. 다시 입력해 주세요."); break;
 				}
 				break;
-
+//반찬
 			case 2 :
 				System.out.println("                             [ 구매 모드 ]                   ");
 				System.out.println();
@@ -296,12 +295,12 @@ public class Buyer extends Manager{
 		System.out.println("                             [ 계산 화면 ]                   ");
 		System.out.println("고객님이 구매하신 금액은 " + buyerSum + "원 입니다.");
 		System.out.println("잔돈 " + change  + "원 입니다.");
-
-		if(customerTel.equals(buyNo[0])) {
-		System.out.println(pointTotal[0] + " 포인트가 적립되었습니다.");
-		} else if(buyNo[0].equals("0000")) {
+		
+		if(customerTel.equals("0000")) {
 			System.out.println("==================");
-		}else {
+		}else if(customerTel.equals(buyNo[0])) {
+		System.out.println(pointTotal[0] + " 포인트가 적립되었습니다.");
+		} else {
 			System.out.println();
 		}
 			
@@ -335,7 +334,9 @@ public class Buyer extends Manager{
 
 		System.out.print("고객님의 휴대폰번호 뒷자리 4개를 입력해 주세요. >");
 		customerTel = Business.sc.next();
-		if(customerTel.equals(buyNo[0])) {
+	     if(customerTel.equals("0000")) {
+			System.out.println("등록된 회원만 조회할 수 있습니다.");
+		}else	if(customerTel.equals(buyNo[0])) {
 
 			System.out.println("[고객 No." + buyNo[0] +"]");
 			System.out.println(buyerName[0] + " 고객님 반갑습니다.");
@@ -374,8 +375,6 @@ public class Buyer extends Manager{
 				System.out.println();
 				buyerMode(); //조회 후 고객모드로 돌아옴
 			}
-		} else if(buyNo[0].equals("0000")) {
-			System.out.println("등록된 회원만 조회할 수 있습니다.");
-		}
+		} 
 	}
 }
