@@ -8,6 +8,7 @@ public class Business {
 
 	public static void main(String[] args) {
 		
+		//매니저클래스에서 프로그램 시작
 		Manager manager = new Manager();
 		manager.start();
 		

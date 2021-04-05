@@ -3,10 +3,12 @@ package team4;
 public interface Food {
 	
 	
-	static int password = 1234; //관리자 비밀번호
+	static int password = 1234; //관리자 비밀번호 상수
 	
 	
-	abstract void search(); //조회 관련 추상메소드   매니저, 바이어 두 클래스에서 재정의 한다.
+	default void search() {
+		//조회 관련 디폴트메소드
+	}
 	
 	default void entering() {
 		//입고 관련 디폴트메소드
