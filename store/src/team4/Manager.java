@@ -4,42 +4,42 @@ import java.util.*;
 
 public class Manager implements Food{
 	
-	static List<String>soupName = new ArrayList<String>(); //ë°˜ì°¬ëª… ë°°ì—´ë¦¬ìŠ¤íŠ¸
-	static List<String>sideName = new ArrayList<String>(); //êµ­ëª… ë°°ì—´ë¦¬ìŠ¤íŠ¸
+	static List<String>soupName = new ArrayList<String>(); 
+	static List<String>sideName = new ArrayList<String>(); 
 	
-	static int[] soupPrice = new int[5]; //êµ­ ê°€ê²© ë°°ì—´
-	static int[] soupAmount = new int[5]; //êµ­ ìˆ˜ëŸ‰ ë°°ì—´
-	static int[] sidePrice  = new int[5]; //ë°˜ì°¬ ê°€ê²© ë°°ì—´
-	static int[] sideAmount = new int[5]; //ë°˜ì°¬ ìˆ˜ëŸ‰ ë°°ì—´
+	static int[] soupPrice = new int[5]; 
+	static int[] soupAmount = new int[5]; 
+	static int[] sidePrice  = new int[5]; 
+	static int[] sideAmount = new int[5]; 
 	
-	static int[] rest1 = new int[5]; // êµ­ ì”ì—¬ëŸ‰
-	static int[] rest2 = new int[5]; // ë°˜ì°¬ ì”ì—¬ëŸ‰
-	static int[] remove = new int[5];
+	static int[] rest1 = new int[5]; 
+	static int[] rest2 = new int[5];
+	static int remove;;
 	
 	boolean flag = true;
-	double avg = 0.0; //í‰ê· êµ¬í•˜ê¸°
+	double avg = 0.0; 
 	
 	
 	
-	public void start() { //ì²« ì‹œì‘í™”ë©´
+	public void start() { 
 
 
 		do {
-			System.out.println("[ ë°˜ì°¬ê°€ê²Œ ê´€ë¦¬ ì‹œìŠ¤í…œ  ]");
+			System.out.println("[ ¹İÂù°¡°Ô °ü¸® ½Ã½ºÅÛ  ]");
 			System.out.println();
-			System.out.println("1. ê´€ë¦¬ì ëª¨ë“œ");
+			System.out.println("1. °ü¸®ÀÚ ¸ğµå");
 			System.out.println();
-			System.out.println("2. ê³ ê° ëª¨ë“œ");
+			System.out.println("2. °í°´ ¸ğµå");
 			System.out.println();
-			System.out.println("3. í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
-			System.out.print("ì„ íƒ >");
+			System.out.println("3. ÇÁ·Î±×·¥ Á¾·á");
+			System.out.print("¼±ÅÃ >");
 			int select = Business.sc.nextInt();
 
 			switch(select) {
 			case 1: password();  break;
 			case 2: Buyer.buyerMode();break;  
-			case 3: System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); System.exit(0); break;
-			default : System.out.println("ë©”ë‰´ë¥¼ ë‹¤ì‹œ ì„ íƒí•˜ì„¸ìš”");
+			case 3: System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù."); System.exit(0); break;
+			default : System.out.println("¸Ş´º¸¦ ´Ù½Ã ¼±ÅÃÇÏ¼¼¿ä");
 			}
 		}while(flag);
 	}
@@ -47,20 +47,20 @@ public class Manager implements Food{
 	
 	
 	
-	public void password() { //ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ ì…ë ¥í™”ë©´
+	public void password() { 
 		int comparition = 1;
 		for(int i=0; i < comparition; i++) {
-			System.out.println("íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-			System.out.print("ì…ë ¥ >");
+			System.out.println("ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			System.out.print("ÀÔ·Â >");
 			int pw = Business.sc.nextInt();
 			if(password == pw) {
 				System.out.println("Manager Login Complete");
 				managerMode();
 			}else {
-				System.out.println("íŒ¨ìŠ¤ì›Œë“œê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”");
+				System.out.println("ÆĞ½º¿öµå°¡ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä");
 				comparition++;
 				if(comparition ==4) {
-					System.out.println("3íšŒ ì´ìƒ í‹€ë ¸ìŠµë‹ˆë‹¤. ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.");
+					System.out.println("3È¸ ÀÌ»ó Æ²·È½À´Ï´Ù. ½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù.");
 					start();
 					break;
 				}
@@ -69,15 +69,15 @@ public class Manager implements Food{
 	}
 	
 	
-	public void managerMode() { //ë§¤ë‹ˆì € ë©”ë‰´
+	public void managerMode() { //¸Å´ÏÀú ¸Ş´º
 
-		System.out.println(" [ ê´€ë¦¬ì ëª¨ë“œ  ] ");
-		System.out.println("1. ì…ê³ ");
-		System.out.println("2. ì‚­ì œ");
-		System.out.println("3. ì œí’ˆì¡°íšŒ");
-		System.out.println("4. ê³ ê°ê´€ë¦¬");
-		System.out.println("5. ëŒì•„ê°€ê¸°");
-		System.out.print("ì„ íƒ >");
+		System.out.println(" [ °ü¸®ÀÚ ¸ğµå  ] ");
+		System.out.println("1. ÀÔ°í");
+		System.out.println("2. »èÁ¦");
+		System.out.println("3. Á¦Ç°Á¶È¸");
+		System.out.println("4. °í°´°ü¸®");
+		System.out.println("5. µ¹¾Æ°¡±â");
+		System.out.print("¼±ÅÃ >");
 		int select = Business.sc.nextInt();
 		switch(select) {
 		case 1: entering(); break;
@@ -86,60 +86,60 @@ public class Manager implements Food{
 		case 4: customer();	break;
 		case 5: start(); break;
 
-		default : System.out.println("ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”"); break;
+		default : System.out.println("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä"); break;
 		}
 	}
-	public void entering() { //ë©”ë‰´ ì…ê³ í™”ë©´
+	public void entering() { 
 		boolean run = true;
 		int select = 0;
-		soupName.add("ê°ˆë¹„íƒ•"); 
-		soupName.add("ìœ¡ê°œì¥");
-		soupName.add("ëœì¥ì°Œê°œ");
-		soupName.add("ê¹€ì¹˜ì°Œê°œ");
-		soupName.add("ë¶€ëŒ€ì°Œê°œ");
+		soupName.add("°¥ºñÅÁ"); 
+		soupName.add("À°°³Àå");
+		soupName.add("µÈÀåÂî°³");
+		soupName.add("±èÄ¡Âî°³");
+		soupName.add("ºÎ´ëÂî°³");
 
-		sideName.add("ë¬´ë§ë­ì´");
-		sideName.add("ë©”ì¶”ë¦¬ì•Œ");
-		sideName.add("ì½©ìë°˜");
-		sideName.add("ë©¸ì¹˜ë³¶ìŒ");
-		sideName.add("ë°°ì¶”ê¹€ì¹˜");
+		sideName.add("¹«¸»·©ÀÌ");
+		sideName.add("¸ŞÃß¸®¾Ë");
+		sideName.add("ÄáÀÚ¹İ");
+		sideName.add("¸êÄ¡ººÀ½");
+		sideName.add("¹èÃß±èÄ¡");
 	
 
 		while(run) {
 			
 			
-				System.out.println("[ ì…ê³   ]");
-				System.out.println("1. êµ­  2. ë°˜ì°¬");
-				System.out.print("ì„ íƒ >");
+				System.out.println("[ ÀÔ°í  ]");
+				System.out.println("1. ±¹  2. ¹İÂù");
+				System.out.print("¼±ÅÃ >");
 				select = Business.sc.nextInt();
 
 			switch(select) {
 
-			case 1: //êµ­ ì…ê³ 
-				System.out.println("                  [ ì…ê³  ê°€ëŠ¥ ëª©ë¡ ]                  ");
+			case 1:
+				System.out.println("                  [ ÀÔ°í °¡´É ¸ñ·Ï ]                  ");
 				System.out.println("1." + soupName.get(0) + " | " +  "2." + soupName.get(1) + " | " + 
 											"3."  +soupName.get(2) + " | " + "4." +soupName.get(3) +" | " + 
 											"5." + soupName.get(4));
 				
-				System.out.print("ì„ íƒ >");
+				System.out.print("¼±ÅÃ >");
 				int selectNo = Business.sc.nextInt();
 				for(int i=0; i < soupAmount.length; i++) {
 					if(selectNo == i+1) {
 						System.out.println();
 						System.out.println((i+1)+ "." +soupName.get(i));
-						System.out.print("ìˆ˜ëŸ‰ ì…ë ¥ >");
+						System.out.print("¼ö·® ÀÔ·Â >");
 						soupAmount[i] += Business.sc.nextInt();
 						rest1[i] = soupAmount[i];
-						System.out.print("ê°€ê²© ì…ë ¥ >");
+						System.out.print("°¡°İ ÀÔ·Â >");
 						soupPrice[i] = Business.sc.nextInt();
-					}//selectNo ifë¬¸ ë
+					}
 					if(selectNo > soupName.size()) {
-						System.out.println("1ë²ˆë¶€í„° 5ë²ˆ ì¤‘ì— ì„ íƒí•´ ì£¼ì„¸ìš”");
+						System.out.println("1¹øºÎÅÍ 5¹ø Áß¿¡ ¼±ÅÃÇØ ÁÖ¼¼¿ä");
 						entering();
-					}//6ë²ˆì°ì—ˆì„ë•Œ ëŒì•„ê°€ê¸°
-				}//forë¬¸ë
-				System.out.println("ê³„ì† í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
-				System.out.print("ì…ë ¥(Y/N) >");
+					}
+				}
+				System.out.println("°è¼Ó ÇÏ½Ã°Ú½À´Ï±î?");
+				System.out.print("ÀÔ·Â(Y/N) >");
 				String ys = Business.sc.next();
 				if(ys.equals("n") || ys.equals("N")) {
 					run = false;
@@ -148,34 +148,34 @@ public class Manager implements Food{
 				}else if(ys.equals("y") || ys.equals("Y")) {
 					break;
 				}else {
-					System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”."); break;
+					System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä."); break;
 				}
 
 
-			case 2: //ë°˜ì°¬ ì…ê³ 
-				System.out.println("                  [ ì…ê³  ê°€ëŠ¥ ëª©ë¡  ]                  ");
+			case 2: //¹İÂù ÀÔ°í
+				System.out.println("                  [ ÀÔ°í °¡´É ¸ñ·Ï  ]                  ");
 				System.out.println("1." + sideName.get(0) + " | " +  "2." + sideName.get(1) + " | " + 
 											"3."  +sideName.get(2) + " | " + "4." +sideName.get(3) +" | " + 
 											"5." + sideName.get(4));
-				System.out.print("ì„ íƒ >");
+				System.out.print("¼±ÅÃ >");
 				selectNo = Business.sc.nextInt();
 				for(int i=0; i < soupAmount.length; i++) {
 					if(selectNo == i+1) {
 						System.out.println();
 						System.out.println((i+1)+ "." +sideName.get(i));
-						System.out.print("ìˆ˜ëŸ‰ ì…ë ¥ >");
+						System.out.print("¼ö·® ÀÔ·Â >");
 						sideAmount[i] += Business.sc.nextInt();
 						rest2[i] = sideAmount[i];
-						System.out.print("ê°€ê²© ì…ë ¥ >");
+						System.out.print("°¡°İ ÀÔ·Â >");
 						sidePrice[i] = Business.sc.nextInt();
-					}//selectNo ifë¬¸ ë
+					}
 					if(selectNo > sideName.size()) {
-						System.out.println("1ë²ˆë¶€í„° 5ë²ˆ ì¤‘ì— ì„ íƒí•´ ì£¼ì„¸ìš”");
+						System.out.println("1¹øºÎÅÍ 5¹ø Áß¿¡ ¼±ÅÃÇØ ÁÖ¼¼¿ä");
 						entering();
-					}//6ë²ˆì°ì—ˆì„ë•Œ ëŒì•„ê°€ê¸°
-				}//forë¬¸ë
-				System.out.println("ê³„ì† í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
-				System.out.print("ì…ë ¥(Y/N) >");
+					}
+				}
+				System.out.println("°è¼Ó ÇÏ½Ã°Ú½À´Ï±î?");
+				System.out.print("ÀÔ·Â(Y/N) >");
 				ys = Business.sc.next();
 				if(ys.equals("n") || ys.equals("N")) {
 					run = false;
@@ -184,155 +184,154 @@ public class Manager implements Food{
 				}else if(ys.equals("y") || ys.equals("Y")) {
 					break;
 				}else {
-					System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”."); break;
+					System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä."); break;
 				}
-			default : System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”"); break;
+			default : System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä"); break;
 			}
-		}//whileë¬¸ ë
+		}//while¹® ³¡
 	}
 	
-	public void delete() { //ë©”ë‰´ ì‚­ì œ í™”ë©´
+	public void delete() { //¸Ş´º »èÁ¦ È­¸é
 		boolean run = true;
 
 		while(run) {
-			System.out.println("[ ì‚­ì œ  ]");
-			System.out.println("1. êµ­  2. ë°˜ì°¬");
-			System.out.print("ì„ íƒ >");
+			System.out.println("[ »èÁ¦  ]");
+			System.out.println("1. ±¹  2. ¹İÂù");
+			System.out.print("¼±ÅÃ >");
 			int select = Business.sc.nextInt();
 
 			switch(select) {
 
 
-			case 1: //êµ­ ì‚­ì œ
+			case 1: //±¹ »èÁ¦
+				if(soupName.size()== 0) {
+					System.out.println("»óÇ°ÀÌ ÁØºñÁßÀÔ´Ï´Ù.");
+					managerMode();
+				}else {
 				System.out.println("1." + soupName.get(0) + " | " +  "2." + soupName.get(1) + " | " + 
 						"3."  +soupName.get(2) + " | " + "4." +soupName.get(3) +" | " + 
 						"5." + soupName.get(4));
-				System.out.print("ì„ íƒ >");
+				System.out.print("¼±ÅÃ >");
 				int selectNo = Business.sc.nextInt();
 				for( int i=0; i < soupAmount.length; i++) {
 					if(selectNo == i+1) {
 						System.out.println((i+1)+ ". " +soupName.get(i));
-						System.out.println("íê¸° ìˆ˜ëŸ‰ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-						System.out.print("ì…ë ¥ >");
-						remove[i] = Business.sc.nextInt();
-						if(remove[i] > soupAmount[i]) {
-							System.out.println("íê¸° í¬ë§ ê°¯ìˆ˜ê°€ ì”ì—¬ ê°¯ìˆ˜ë³´ë‹¤ ë§ìŠµë‹ˆë‹¤.");
+						System.out.println("Æó±â ¼ö·®À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						System.out.print("ÀÔ·Â >");
+						remove = Business.sc.nextInt();
+						if(remove > soupAmount[i]) {
+							System.out.println("Æó±â Èñ¸Á °¹¼ö°¡ ÀÜ¿© °¹¼öº¸´Ù ¸¹½À´Ï´Ù.");
 						}else {
-							rest1[i] = soupAmount[i]-remove[i];
-							System.out.println("íê¸°ì²˜ë¦¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+							rest1[i] = soupAmount[i]-remove;
+							System.out.println("Æó±âÃ³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
 						}
 						
-					}//if select ë
+					}
 					if(selectNo > soupName.size()) {
-						System.out.println("1ë²ˆë¶€í„° 5ë²ˆ ì¤‘ì— ì„ íƒí•´ ì£¼ì„¸ìš”");
+						System.out.println("1¹øºÎÅÍ 5¹ø Áß¿¡ ¼±ÅÃÇØ ÁÖ¼¼¿ä");
 						delete();
-					}//6ë²ˆì°ì—ˆì„ë•Œ
-				}//forë¬¸ ë
-				System.out.print("ëŒì•„ê°€ê¸°(Y or N) >");
+					}
+				}
+				System.out.print("µ¹¾Æ°¡±â(Y or N) >");
 				String yn = Business.sc.next();
 				if(yn.equals("y") || yn.equals("Y")) managerMode();
 				if(yn.equals("n") || yn.equals("N")) delete();
-				else System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤."); 	
+				else System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù."); 	
 				break;
+				}
 
-
-			case 2: //ë°˜ì°¬ ì‚­ì œ
+			case 2: 
+				if(sideName.size()== 0) {
+					System.out.println("»óÇ°ÀÌ ÁØºñÁßÀÔ´Ï´Ù.");
+					managerMode();
+				}else {
 				System.out.println("1." + sideName.get(0) + " | " +  "2." + sideName.get(1) + " | " + 
 						"3."  +sideName.get(2) + " | " + "4." +sideName.get(3) +" | " + 
 						"5." + sideName.get(4));
-				System.out.print("ì„ íƒ >");
-				selectNo = Business.sc.nextInt();
+				System.out.print("¼±ÅÃ >");
+				int selectNo = Business.sc.nextInt();
 				for( int i=0; i < sideAmount.length; i++) {
 					if(selectNo == i+1) {
 						System.out.println((i+1)+ ". " + sideName.get(i));
-						System.out.println("íê¸° ìˆ˜ëŸ‰ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-						System.out.print("ì…ë ¥ >");
-						remove[i] = Business.sc.nextInt();
-						if(remove[i] > sideAmount[i]) {
-							System.out.println("íê¸° í¬ë§ ê°¯ìˆ˜ê°€ ì”ì—¬ ê°¯ìˆ˜ë³´ë‹¤ ë§ìŠµë‹ˆë‹¤.");
+						System.out.println("Æó±â ¼ö·®À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						System.out.print("ÀÔ·Â >");
+						remove = Business.sc.nextInt();
+						if(remove > sideAmount[i]) {
+							System.out.println("Æó±â Èñ¸Á °¹¼ö°¡ ÀÜ¿© °¹¼öº¸´Ù ¸¹½À´Ï´Ù.");
 						}else {
-							rest2[i] = sideAmount[i]-remove[i];
-							System.out.println("íê¸°ì²˜ë¦¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+							rest2[i] = sideAmount[i]-remove;
+							System.out.println("Æó±âÃ³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
 						}
 						
 					}
 					if(selectNo > sideName.size()) {
-						System.out.println("1ë²ˆë¶€í„° 5ë²ˆ ì¤‘ì— ì„ íƒí•´ ì£¼ì„¸ìš”");
+						System.out.println("1¹øºÎÅÍ 5¹ø Áß¿¡ ¼±ÅÃÇØ ÁÖ¼¼¿ä");
 						delete();
-					}//6ë²ˆì°ì—ˆì„ë•Œ
-				}//forë¬¸ ë
-				System.out.print("ëŒì•„ê°€ê¸°(Y or N) >");
-				yn = Business.sc.next();
+					}
+				}
+				System.out.print("µ¹¾Æ°¡±â(Y or N) >");
+				String yn = Business.sc.next();
 				if(yn.equals("y") || yn.equals("Y")) managerMode();
 				if(yn.equals("n") || yn.equals("N")) delete();
-				else System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤."); 
+				else System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù."); 
 				break;
-			default : System.out.println("ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤."); delete(); break;
-			}//end switch
-		}//end while
-	}//end delete
+				}
+			default : System.out.println("Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù."); delete(); break;
+			}
+		}
+	}
 	
-
-	public void customer() { //ê³ ê° ê´€ë¦¬ í™”ë©´
-		System.out.println("                  [ ê³ ê° ê´€ë¦¬  ]                      ");
-		System.out.println("---------------------------------------------------");
-		System.out.println("|     No.     |      ê³ ê°ëª…           |     ì´ êµ¬ë§¤ê¸ˆì•¡          |");
-		System.out.println("---------------------------------------------------");
-		
-		
+	public void customer() { 
+		System.out.println("                  [ °í°´ °ü¸®  ]                      ");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("|     No.     |      °í°´¸í           |     ÃÑ ±¸¸Å±İ¾×          |");
+		System.out.println("---------------------------------------------------------------");
 		
 		for(int i = 0; i<=Buyer.numbuyer; i++) {
 			System.out.println("\t" +Buyer.buyNo[i] + "\t\t" + Buyer.buyerName[i] + "\t\t" + Buyer.buyerSum);
 		}
 		
 		avg =  Buyer.rating[0]  / Buyer.num2;
-		System.out.println("í˜„ì¬ ì €í¬ê°€ê²Œì˜ í‰ê°€ëŠ” " + avg + "ì  ì…ë‹ˆë‹¤.");
+		System.out.println("ÇöÀç ÀúÈñ°¡°ÔÀÇ Æò°¡´Â " + avg + "Á¡ ÀÔ´Ï´Ù.");
 		managerMode();
 	}
 
-
-
-	public void search() { //ì…ê³ ëœ ë©”ë‰´ ì¡°íšŒ í™”ë©´
+	public void search() { 
 		
 		int i;
-		soupName.add("ê°ˆë¹„íƒ•"); 
-		soupName.add("ìœ¡ê°œì¥");
-		soupName.add("ëœì¥ì°Œê°œ");
-		soupName.add("ê¹€ì¹˜ì°Œê°œ");
-		soupName.add("ë¶€ëŒ€ì°Œê°œ");
+		soupName.add("°¥ºñÅÁ"); 
+		soupName.add("À°°³Àå");
+		soupName.add("µÈÀåÂî°³");
+		soupName.add("±èÄ¡Âî°³");
+		soupName.add("ºÎ´ëÂî°³");
 		
-		sideName.add("ë¬´ë§ë­ì´");
-		sideName.add("ë©”ì¶”ë¦¬ì•Œ");
-		sideName.add("ì½©ìë°˜");
-		sideName.add("ë©¸ì¹˜ë³¶ìŒ");
-		sideName.add("ë°°ì¶”ê¹€ì¹˜");
+		sideName.add("¹«¸»·©ÀÌ");
+		sideName.add("¸ŞÃß¸®¾Ë");
+		sideName.add("ÄáÀÚ¹İ");
+		sideName.add("¸êÄ¡ººÀ½");
+		sideName.add("¹èÃß±èÄ¡");
 		
-		System.out.println("                   [ ì œí’ˆ ì¡°íšŒ  ]                       ");
+		System.out.println("                   [ Á¦Ç° Á¶È¸  ]                       ");
 		System.out.println();
-		System.out.println("                     [ êµ­ë¥˜  ]                         ");
-		System.out.println("---------------------------------------------------");
-		System.out.println("|     ë©”ë‰´ëª…          |     ì…ê³  ìˆ˜ëŸ‰          |     ì”ì—¬ ê°¯ìˆ˜          |");
-		System.out.println("---------------------------------------------------");
+		System.out.println("                     [ ±¹·ù  ]                         ");
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("|     ¸Ş´º¸í          |     ÀÔ°í ¼ö·®          |     ÀÜ¿© °¹¼ö          |");
+		System.out.println("-----------------------------------------------------------------------");
 		for (  i = 0; i < 5; i++) {
-			System.out.println("\t" + soupName.get(i) + "\t\t" + soupAmount[i]+ "ê°œ" + "\t\t" + rest1[i]+ "ê°œ");
+			System.out.println("\t" + soupName.get(i) + "\t\t" + soupAmount[i]+ "°³" + "\t\t" + rest1[i]+ "°³");
 			
 		}
 		
-		
 		System.out.println();
-		System.out.println("                    [ ë°˜ì°¬ë¥˜  ]                        ");
-		System.out.println("---------------------------------------------------");
-		System.out.println("|     ë©”ë‰´ëª…          |     ì…ê³  ìˆ˜ëŸ‰          |     ì”ì—¬ ê°¯ìˆ˜          |");
-		System.out.println("---------------------------------------------------");
+		System.out.println("                    [ ¹İÂù·ù  ]                        ");
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("|     ¸Ş´º¸í          |     ÀÔ°í ¼ö·®          |     ÀÜ¿© °¹¼ö          |");
+		System.out.println("-----------------------------------------------------------------------");
 		for (  i = 0; i < 5; i++) {
-			System.out.println("\t" + sideName.get(i) + "\t\t" + sideAmount[i]+ "ê°œ" + "\t\t" + rest2[i]+ "ê°œ");
+			System.out.println("\t" + sideName.get(i) + "\t\t" + sideAmount[i]+ "°³" + "\t\t" + rest2[i]+ "°³");
 		}
 		System.out.println();
 		managerMode();
 	}
 
-
-	
-
-	
 }
