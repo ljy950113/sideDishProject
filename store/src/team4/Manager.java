@@ -14,7 +14,7 @@ public class Manager implements Food{
 	
 	static int[] rest1 = new int[5]; 
 	static int[] rest2 = new int[5];
-	static int remove;;
+	static int remove;
 	
 	boolean flag = true;
 	double avg = 0.0; 
