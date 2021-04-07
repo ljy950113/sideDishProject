@@ -16,7 +16,8 @@ public class Buyer extends Manager{
 	static List<String> buySoup = new ArrayList<String>(); 
 	static List<String> buySide = new ArrayList<String>(); 
 	static List<Integer> priceSp = new ArrayList<Integer>(); 
-	static List<Integer> priceSe = new ArrayList<Integer>(); 
+	static List<Integer> priceSe = new ArrayList<Integer>();
+	
 	static int totalNum = 0; 
 	static int soupNum = 0; 
 	static int sideNum = 0; 
@@ -43,46 +44,47 @@ public class Buyer extends Manager{
 	static boolean tt = true; 
 	static int num2 = 0;
 
+	
 	public static void buyerMode() { 
 
 		Manager manager = new Manager();
 
 
-		System.out.println(" [ °í°´ ¸ğµå  ] ");
-		System.out.println("1. µî·Ï");
-		System.out.println("2. ±¸¸Å");
-		System.out.println("3. Á¶È¸");
-		System.out.println("4. Á¾·á");
-		System.out.print("¼±ÅÃ >");
+		System.out.println(" [ ê³ ê° ëª¨ë“œ  ] ");
+		System.out.println("1. ë“±ë¡");
+		System.out.println("2. êµ¬ë§¤");
+		System.out.println("3. ì¡°íšŒ");
+		System.out.println("4. ì¢…ë£Œ");
+		System.out.print("ì„ íƒ >");
 		int select = Business.sc.nextInt();
 
 		switch(select) {
 		case 1: buyerNumber(); break;
 		case 2: buyerPurchase(); break;
-		case 3: Search(); break;
+		case 3: buyerSearch(); break;
 		case 4: manager.start(); break;
-		default : System.out.println("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä"); buyerMode(); break;
+		default : System.out.println("ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”"); buyerMode(); break;
 		}
 	}
 
 	public static void buyerNumber() { 
 
-		System.out.println("[ ½Å±Ô°í°´ µî·ÏÈ­¸é  ]");
-		System.out.println("°í°´´ÔÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		System.out.print("ÀÔ·Â >");
+		System.out.println("[ ì‹ ê·œê³ ê° ë“±ë¡í™”ë©´  ]");
+		System.out.println("ê³ ê°ë‹˜ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		System.out.print("ì…ë ¥ >");
 		buyerInput = Business.sc.next();
 
 		if(buyerInput.equals(buyerName[0])) {
-			System.out.println("ÀÌ¹Ì µî·ÏµÈ °í°´ÀÔ´Ï´Ù.");
+			System.out.println("ì´ë¯¸ ë“±ë¡ëœ ê³ ê°ì…ë‹ˆë‹¤.");
 			System.out.println();
 			buyerMode();
 		} else {
 			buyerName[0] = buyerInput;	
-			System.out.println("°í°´´ÔÀÇ ÈŞ´ë¹øÈ£ µŞÀÚ¸® 4°³¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			System.out.print("ÀÔ·Â >");
+			System.out.println("ê³ ê°ë‹˜ì˜ íœ´ëŒ€ë²ˆí˜¸ ë’·ìë¦¬ 4ê°œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.print("ì…ë ¥ >");
 			buyNo[0] = Business.sc.next();
 
-			System.out.println("½Å±Ô °í°´À¸·Î µî·ÏµÇ¼Ì½À´Ï´Ù !!!");
+			System.out.println("ì‹ ê·œ ê³ ê°ìœ¼ë¡œ ë“±ë¡ë˜ì…¨ìŠµë‹ˆë‹¤ !!!");
 			System.out.println();
 			buyerMode();
 		}
@@ -90,50 +92,50 @@ public class Buyer extends Manager{
 
 	public static void buyerPurchase() { 
 
-		System.out.println("½Å±Ô °í°´ Áß °í°´ µî·ÏÀ» ¿øÇÏ½Ã¸é ¼ıÀÚ 3¹øÀ» ÀÔ·ÂÇØÁÖ½Ã°í,");
-		System.out.println("µî·ÏÀ» ¿øÇÏÁö ¾ÊÀ¸½Ã´Ù¸é '0000'À» ÀÔ·ÂÇÏ¿© ÁøÇàÇØ ÁÖ¼¼¿ä.");
-		System.out.println("°í°´¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		System.out.print("ÀÔ·Â >");
+		System.out.println("ì‹ ê·œ ê³ ê° ì¤‘ ê³ ê° ë“±ë¡ì„ ì›í•˜ì‹œë©´ ìˆ«ì 3ë²ˆì„ ì…ë ¥í•´ì£¼ì‹œê³ ,");
+		System.out.println("ë“±ë¡ì„ ì›í•˜ì§€ ì•Šìœ¼ì‹œë‹¤ë©´ '0000'ì„ ì…ë ¥í•˜ì—¬ ì§„í–‰í•´ ì£¼ì„¸ìš”.");
+		System.out.println("ê³ ê°ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		System.out.print("ì…ë ¥ >");
 
 		try { 
 			customerTel = Business.sc.next();
 		} catch(InputMismatchException e) {
-			System.err.println("ºñÁ¤»óÀûÀÎ Á¢±ÙÀÔ´Ï´Ù. ½Ã½ºÅÛÀ» ´Ù½Ã ½ÃÀÛÇØ ÁÖ¼¼¿ä.");
+			System.err.println("ë¹„ì •ìƒì ì¸ ì ‘ê·¼ì…ë‹ˆë‹¤. ì‹œìŠ¤í…œì„ ë‹¤ì‹œ ì‹œì‘í•´ ì£¼ì„¸ìš”.");
 			System.exit(0);
 		}
 
 		if(customerTel.equals(buyNo[0])) {
 
 			System.out.println();
-			System.out.println(buyerName[0] + "°í°´´Ô ÀúÈñ ¹İÂù°¡°Ô¸¦ ¹æ¹®ÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù!");
+			System.out.println(buyerName[0] + "ê³ ê°ë‹˜ ì €í¬ ë°˜ì°¬ê°€ê²Œë¥¼ ë°©ë¬¸í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤!");
 			System.out.println();
 
 		} else if (customerTel .equals("0000")) { 
 			buyNo[0] = "0000";
-            buyerName[0] = "¹Ìµî·Ï";
+            buyerName[0] = "ë¯¸ë“±ë¡";
             System.out.println();
-            System.out.println(buyerName[0] +"°í°´´Ô ÀúÈñ ¹İÂù°¡°Ô¸¦ ¹æ¹®ÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù!");
+            System.out.println(buyerName[0] +"ê³ ê°ë‹˜ ì €í¬ ë°˜ì°¬ê°€ê²Œë¥¼ ë°©ë¬¸í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤!");
             System.out.println();
 
 		} else if(customerTel.equals("3")) { 
 			buyerNumber();
 		} else {
-			System.out.println("¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+			System.out.println("ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
 			buyerMode();
 		}
 
-		System.out.println("                    [ ±¸¸Å ¸ğµå  ]                   ");
+		System.out.println("                    [ êµ¬ë§¤ ëª¨ë“œ  ]                   ");
 		System.out.println();
-		System.out.println("--------------------------------------------------------------------");
-		System.out.println("|     ¸Ş´º¸í          |      ³²Àº ¼ö·®           |      °¡°İ           |");
-		System.out.println("--------------------------------------------------------------------");
+		System.out.println("---------------------------------------------------");
+		System.out.println("|     ë©”ë‰´ëª…          |      ë‚¨ì€ ìˆ˜ëŸ‰           |      ê°€ê²©           |");
+		System.out.println("---------------------------------------------------");
 
 		for(int i = 0; i <  soupAmount.length; i++) {
 			if(Manager.soupName.size()== 0) {
-				System.out.println("»óÇ°ÀÌ ÁØºñÁßÀÔ´Ï´Ù.");
+				System.out.println("ìƒí’ˆì´ ì¤€ë¹„ì¤‘ì…ë‹ˆë‹¤.");
 				buyerMode();
 			}else {
-				System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i] + "°³" + "\t\t" + Manager.soupPrice[i]+"¿ø");
+				System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i] + "ê°œ" + "\t\t" + Manager.soupPrice[i]+"ì›");
 			}
 		}
 
@@ -141,17 +143,17 @@ public class Buyer extends Manager{
 
 		for(int i = 0; i < soupAmount.length; i++) {
 			if(Manager.sideName.size() == 0) {
-				System.out.println("»óÇ°ÀÌ ÁØºñÁßÀÔ´Ï´Ù.");
+				System.out.println("ìƒí’ˆì´ ì¤€ë¹„ì¤‘ì…ë‹ˆë‹¤.");
 				buyerMode();
 			}else {
-				System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i] + "°³" + "\t\t" + Manager.sidePrice[i]+"¿ø");
+				System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i] + "ê°œ" + "\t\t" + Manager.sidePrice[i]+"ì›");
 			}
 		}
 
 
 		if(flag) {
-			System.out.println("ÇöÀç ¼ÒÁö±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			System.out.print("ÀÔ·Â >");
+			System.out.println("í˜„ì¬ ì†Œì§€ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.print("ì…ë ¥ >");
 			change = Business.sc.nextInt();
 			flag = false;
 		}
@@ -159,8 +161,8 @@ public class Buyer extends Manager{
 		while(run) {
 
 			
-			System.out.println("[±¸¸ÅÇÏ±â]  1. ±¹·ù | 2. ¹İÂù  | 3. µ¹¾Æ°¡±â");
-			System.out.print("¼±ÅÃ >");
+			System.out.println("[êµ¬ë§¤í•˜ê¸°]  1. êµ­ë¥˜ | 2. ë°˜ì°¬  | 3. ëŒì•„ê°€ê¸°");
+			System.out.print("ì„ íƒ >");
 			int select = Business.sc.nextInt();
 			int i;
 
@@ -168,20 +170,20 @@ public class Buyer extends Manager{
 			case  1 :
 				
 				System.out.println();
-				System.out.println("--------------------------------------------------------------------");
-				System.out.println("|     ¸Ş´º¸í          |      ³²Àº ¼ö·®           |      °¡°İ           |");
-				System.out.println("--------------------------------------------------------------------");
+				System.out.println("---------------------------------------------------");
+				System.out.println("|     ë©”ë‰´ëª…          |      ë‚¨ì€ ìˆ˜ëŸ‰           |      ê°€ê²©           |");
+				System.out.println("---------------------------------------------------");
 
 				for( i = 0; i < soupAmount.length; i++) {
-					System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "°³" + "\t\t" + Manager.soupPrice[i]+"¿ø");
+					System.out.println("\t" + Manager.soupName.get(i) + "\t\t" + Manager.rest1[i]+ "ê°œ" + "\t\t" + Manager.soupPrice[i]+"ì›");
 				}
 
-				System.out.println("±¸¸ÅÇÏ½Ç »óÇ°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-				System.out.print("ÀÔ·Â >");
+				System.out.println("êµ¬ë§¤í•˜ì‹¤ ìƒí’ˆëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.print("ì…ë ¥ >");
 				productName = Business.sc.next();
 
-				System.out.println("±¸¸ÅÇÏ½Ç »óÇ°ÀÇ ¼ö·®À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-				System.out.print("ÀÔ·Â >");
+				System.out.println("êµ¬ë§¤í•˜ì‹¤ ìƒí’ˆì˜ ìˆ˜ëŸ‰ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.print("ì…ë ¥ >");
 				productCount = Business.sc.nextInt();
 
 
@@ -200,18 +202,18 @@ public class Buyer extends Manager{
 
 					}
 
-				}//for ³¡
+				}//for ë
 
 				if(tt) {
-					System.out.println("ÇØ´ç»óÇ°Àº ÀúÈñ°¡°Ô¿¡ ¾ø½À´Ï´Ù.");
+					System.out.println("í•´ë‹¹ìƒí’ˆì€ ì €í¬ê°€ê²Œì— ì—†ìŠµë‹ˆë‹¤.");
 					break;
 				}else if(Manager.rest1[num] < productCount) {
-					System.out.println("Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+					System.out.println("ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 					buyerMode();
 					break;
 
 				}else if(change < (Manager.soupPrice[num]* productCount)){
-					System.out.println("°í°´´ÔÀÇ ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+					System.out.println("ê³ ê°ë‹˜ì˜ ì”ì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 					buyerMode();
 				}else {						
 					Manager.rest1[num]-=productCount;
@@ -226,13 +228,13 @@ public class Buyer extends Manager{
 					totalNum++;
 					num = 0;
 					tt = true;
-					System.out.println("±¸¸Å¿Ï·á !!!");
+					System.out.println("êµ¬ë§¤ì™„ë£Œ !!!");
 
 
 				}
 
-				System.out.println("°è¼Ó ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?");
-				System.out.print("ÀÔ·Â(Y/N) >");
+				System.out.println("ê³„ì† êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+				System.out.print("ì…ë ¥(Y/N) >");
 				String ys = Business.sc.next();
 				if(ys.equals("n") || ys.equals("N")) {
 					point();
@@ -242,7 +244,7 @@ public class Buyer extends Manager{
 					run = true; 
 					
 				}else {
-					System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä."); break;
+					System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”."); break;
 				}
 				break;
 				
@@ -250,20 +252,20 @@ public class Buyer extends Manager{
 				
 	
 				System.out.println();
-				System.out.println("--------------------------------------------------------------------");
-				System.out.println("|     ¸Ş´º¸í          |      ³²Àº ¼ö·®           |      °¡°İ           |");
-				System.out.println("--------------------------------------------------------------------");
+				System.out.println("---------------------------------------------------");
+				System.out.println("|     ë©”ë‰´ëª…          |      ë‚¨ì€ ìˆ˜ëŸ‰           |      ê°€ê²©           |");
+				System.out.println("---------------------------------------------------");
 
 				for( i = 0; i < soupAmount.length; i++) {
-					System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i]+ "°³" + "\t\t" + Manager.sidePrice[i]+"¿ø");
+					System.out.println("\t" + Manager.sideName.get(i) + "\t\t" + Manager.rest2[i]+ "ê°œ" + "\t\t" + Manager.sidePrice[i]+"ì›");
 				}
 
-				System.out.println("±¸¸ÅÇÏ½Ç »óÇ°¸íÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
-				System.out.print("ÀÔ·Â >");
+				System.out.println("êµ¬ë§¤í•˜ì‹¤ ìƒí’ˆëª…ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
+				System.out.print("ì…ë ¥ >");
 				productName = Business.sc.next();
 
-				System.out.println("±¸¸ÅÇÏ½Ç »óÇ°ÀÇ ¼ö·®À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä. ");
-				System.out.print("ÀÔ·Â >");
+				System.out.println("êµ¬ë§¤í•˜ì‹¤ ìƒí’ˆì˜ ìˆ˜ëŸ‰ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”. ");
+				System.out.print("ì…ë ¥ >");
 				productCount = Business.sc.nextInt();
 
 				for(int j = 0; j<sideAmount.length; j++) {
@@ -281,15 +283,15 @@ public class Buyer extends Manager{
 				}
 
 				if(tt) {
-					System.out.println("ÇØ´ç»óÇ°Àº ÀúÈñ°¡°Ô¿¡ ¾ø½À´Ï´Ù.");
+					System.out.println("í•´ë‹¹ìƒí’ˆì€ ì €í¬ê°€ê²Œì— ì—†ìŠµë‹ˆë‹¤.");
 					break;
 				}else if(Manager.rest2[num] < productCount) {
-					System.out.println("Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+					System.out.println("ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 					buyerMode();
 					break;
 
 				}else if(change < (Manager.sidePrice[num]* productCount)){
-					System.out.println("°í°´´ÔÀÇ ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+					System.out.println("ê³ ê°ë‹˜ì˜ ì”ì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 					buyerMode();
 				}else {						
 					Manager.rest2[num]-=productCount;
@@ -304,12 +306,12 @@ public class Buyer extends Manager{
 					totalNum++;
 					num = 0;
 					tt = true;
-					System.out.println("±¸¸Å¿Ï·á !!!");
+					System.out.println("êµ¬ë§¤ì™„ë£Œ !!!");
 
 				}
 
-				System.out.println("°è¼Ó ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?");
-				System.out.print("ÀÔ·Â(Y/N) >");
+				System.out.println("ê³„ì† êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+				System.out.print("ì…ë ¥(Y/N) >");
 				ys = Business.sc.next();
 
 				if(ys.equals("y") || ys.equals("Y")) {
@@ -320,7 +322,7 @@ public class Buyer extends Manager{
 					buyerMode();
 					
 				}else {
-					System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä."); break;
+					System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”."); break;
 				}
 				break;
 
@@ -329,7 +331,7 @@ public class Buyer extends Manager{
 				break;
 
 			default : 
-				System.out.println("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+				System.out.println("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 				buyerPurchase(); 
 				break;
 			} 
@@ -340,92 +342,92 @@ public class Buyer extends Manager{
 	public static void point() {
 
 
-		System.out.println("                  [ °è»ê È­¸é  ]                   ");
-		System.out.println("°í°´´ÔÀÌ ±¸¸ÅÇÏ½Å ±İ¾×Àº " + buyerSum + "¿ø ÀÔ´Ï´Ù.");
-		System.out.println("ÀÜµ· " + change  + "¿ø ÀÔ´Ï´Ù.");
+		System.out.println("                  [ ê³„ì‚° í™”ë©´  ]                   ");
+		System.out.println("ê³ ê°ë‹˜ì´ êµ¬ë§¤í•˜ì‹  ê¸ˆì•¡ì€ " + buyerSum + "ì› ì…ë‹ˆë‹¤.");
+		System.out.println("ì”ëˆ " + change  + "ì› ì…ë‹ˆë‹¤.");
 
 		if(customerTel.equals("0000")) {
 			System.out.println("============================================");
 		}else if(customerTel.equals(buyNo[0])) {
-			System.out.println(pointTotal[0] + " Æ÷ÀÎÆ®°¡ Àû¸³µÇ¾ú½À´Ï´Ù.");
+			System.out.println(pointTotal[0] + " í¬ì¸íŠ¸ê°€ ì ë¦½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} else {
 			System.out.println();
 		}
 
 		if(buyNo[0].equals("0000")) {
-			System.out.println("* ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. *");
+			System.out.println("* ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. *");
 		}else {
 			
-			System.out.println("                [ Æò°¡ È­¸é ]                   ");
-			System.out.println("º» ¹İÂù°¡°Ô¿¡ ´ëÇØ °í°´´ÔÀÇ Æò°¡¸¦ ¹Ş°í ÀÖ½À´Ï´Ù.");
-			System.out.println("Æò°¡¸¦ Èñ¸ÁÇÏ½Ã´Â °æ¿ì Y¸¦ Èñ¸ÁÇÏÁö ¾ÊÀ¸¸é NÀ» ´­·¯ÁÖ¼¼¿ä.");
-			System.out.print("ÀÔ·Â (Y/N) >");
+			System.out.println("                [ í‰ê°€ í™”ë©´ ]                   ");
+			System.out.println("ë³¸ ë°˜ì°¬ê°€ê²Œì— ëŒ€í•´ ê³ ê°ë‹˜ì˜ í‰ê°€ë¥¼ ë°›ê³  ìˆìŠµë‹ˆë‹¤.");
+			System.out.println("í‰ê°€ë¥¼ í¬ë§í•˜ì‹œëŠ” ê²½ìš° Yë¥¼ í¬ë§í•˜ì§€ ì•Šìœ¼ë©´ Nì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
+			System.out.print("ì…ë ¥ (Y/N) >");
 			yesOrNo = Business.sc.next();
 
 			if(yesOrNo.equals("Y") | yesOrNo.equals("y")) {
 
-				System.out.println("Æò°¡¿¡ Âü¿©ÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. Æò°¡ ºÎÅ¹µå¸³´Ï´Ù.");
-				System.out.println(" 5. ¾ÆÁÖ ÁÁ¾Ò´Ù " + "\t\t" + " 4. ÁÁ¾Ò´Ù. " + "\t\t" + " 3. º¸ÅëÀÌ´Ù. " + "\t\t" + " 2. º°·Î¿´´Ù. " + "\t\t" + " 1. ¸Å¿ì º°·Î¿´´Ù. ");
-				System.out.print("Æò°¡ ÀÔ·Â (1~5) >");
+				System.out.println("í‰ê°€ì— ì°¸ì—¬í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. í‰ê°€ ë¶€íƒë“œë¦½ë‹ˆë‹¤.");
+				System.out.println(" 5. ì•„ì£¼ ì¢‹ì•˜ë‹¤ " + "\t\t" + " 4. ì¢‹ì•˜ë‹¤. " + "\t\t" + " 3. ë³´í†µì´ë‹¤. " + "\t\t" + " 2. ë³„ë¡œì˜€ë‹¤. " + "\t\t" + " 1. ë§¤ìš° ë³„ë¡œì˜€ë‹¤. ");
+				System.out.print("í‰ê°€ ì…ë ¥ (1~5) >");
 				rate = Business.sc.nextInt();
 				num2++;
 				rating[0] += rate;
 
-				System.out.println("°í°´´ÔÀÇ ¼ÒÁßÇÑ ÀÇ°ß °¨»çÇÕ´Ï´Ù.");
-				System.out.println("* ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. *");
+				System.out.println("ê³ ê°ë‹˜ì˜ ì†Œì¤‘í•œ ì˜ê²¬ ê°ì‚¬í•©ë‹ˆë‹¤.");
+				System.out.println("* ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. *");
 
 			} else if(yesOrNo.equals("N") | yesOrNo.equals("n")) {
-				System.out.println("* ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. *");
+				System.out.println("* ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. *");
 			} else {
-				System.out.println("y ¶Ç´Â nÀ» ÀÔ·ÂÇÏ¿© ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+				System.out.println("y ë˜ëŠ” nì„ ì…ë ¥í•˜ì—¬ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
 			}
 		}
 
 	}
 
-	public static void Search() { 
+	public static void buyerSearch() { 
 
-		System.out.print("°í°´´ÔÀÇ ÈŞ´ëÆù¹øÈ£ µŞÀÚ¸® 4°³¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä. >");
+		System.out.print("ê³ ê°ë‹˜ì˜ íœ´ëŒ€í°ë²ˆí˜¸ ë’·ìë¦¬ 4ê°œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”. >");
 		customerTel = Business.sc.next();
 		if(customerTel.equals("0000")) {
-			System.out.println("µî·ÏµÈ È¸¿ø¸¸ Á¶È¸ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+			System.out.println("ë“±ë¡ëœ íšŒì›ë§Œ ì¡°íšŒí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 		}else	if(customerTel.equals(buyNo[0])) {
 
-			System.out.println("[°í°´ No." + buyNo[0] +"]");
-			System.out.println(buyerName[0] + " °í°´´Ô ¹İ°©½À´Ï´Ù.");
+			System.out.println("[ê³ ê° No." + buyNo[0] +"]");
+			System.out.println(buyerName[0] + " ê³ ê°ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.");
 			System.out.println();
 
 			
 			if(totalNum == 0) {
-				System.out.println(" °í°´´ÔÀÇ ±¸¸Å³»¿ªÀº ºñ¾îÀÖ½À´Ï´Ù ±¸¸ÅÇÏ·¯ °¡º¼±î¿ä~? ");
+				System.out.println(" ê³ ê°ë‹˜ì˜ êµ¬ë§¤ë‚´ì—­ì€ ë¹„ì–´ìˆìŠµë‹ˆë‹¤ êµ¬ë§¤í•˜ëŸ¬ ê°€ë³¼ê¹Œìš”~? ");
 				System.out.println();
 				buyerMode(); 
 			} else {
 				
-				System.out.println(" [ °í°´ Á¶È¸  ] ");
+				System.out.println(" [ ê³ ê° ì¡°íšŒ  ] ");
 
 				if(soupNum == 0) { 
-					System.out.println("±¹Àº ±¸¸ÅÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+					System.out.println("êµ­ì€ êµ¬ë§¤í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
 					System.out.println();
 				} else {
 					for(int i = 0; i<soupNum; i++) { 
-						System.out.println("±¸¸Å ±¹¸í: " + buySoup.get(i) +"\t" + "±¸¸Å °³¼ö: " + priceSp.get(i)+ "°³");
+						System.out.println("êµ¬ë§¤ êµ­ëª…: " + buySoup.get(i) +"\t" + "êµ¬ë§¤ ê°œìˆ˜: " + priceSp.get(i)+ "ê°œ");
 					}	
 					System.out.println("=========================================================================");
 				}
 				if(sideNum == 0) { 
-					System.out.println("¹İÂùÀº ±¸¸ÅÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.");
+					System.out.println("ë°˜ì°¬ì€ êµ¬ë§¤í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.");
 					System.out.println();
 				} else {
 					for(int i = 0; i<sideNum; i++) { 
-						System.out.println("±¸¸Å ¹İÂù¸í: " + buySide.get(i) +"\t" + "±¸¸Å °³¼ö: " + priceSe.get(i)+ "°³");
+						System.out.println("êµ¬ë§¤ ë°˜ì°¬ëª…: " + buySide.get(i) +"\t" + "êµ¬ë§¤ ê°œìˆ˜: " + priceSe.get(i)+ "ê°œ");
 						System.out.println();
 					}
 				}
 				System.out.println("=========================================================================");
-				System.out.println("°í°´´ÔÀÇ ÃÑ ±¸¸Å±İ¾×Àº " + buyerSum + "¿ø ÀÌ¸ç ÀÜ¾×Àº " + change + "¿ø ÀÔ´Ï´Ù.");
-				System.out.println("°í°´´ÔÀÇ ÀÜ¿©Æ÷ÀÎÆ®´Â " + pointTotal[0] + "Á¡ ÀÔ´Ï´Ù.");
-				System.out.println(" * ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. * ");
+				System.out.println("ê³ ê°ë‹˜ì˜ ì´ êµ¬ë§¤ê¸ˆì•¡ì€ " + buyerSum + "ì› ì´ë©° ì”ì•¡ì€ " + change + "ì› ì…ë‹ˆë‹¤.");
+				System.out.println("ê³ ê°ë‹˜ì˜ ì”ì—¬í¬ì¸íŠ¸ëŠ” " + pointTotal[0] + "ì  ì…ë‹ˆë‹¤.");
+				System.out.println(" * ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. * ");
 
 				System.out.println();
 				buyerMode(); 
